@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  IPCanary
 //
 //  Created by Seth Butler on 12/15/16.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
