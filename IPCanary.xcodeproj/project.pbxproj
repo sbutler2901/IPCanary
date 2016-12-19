@@ -12,12 +12,13 @@
 		B6F81BA6C6968D89F0EFA54B /* Pods_IPCanaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF47A40F680B03031CCD6C /* Pods_IPCanaryUITests.framework */; };
 		D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */; };
 		D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA421E02EF0A00E81AE1 /* MainViewController.swift */; };
-		D378FA461E02EF0A00E81AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D378FA441E02EF0A00E81AE1 /* Main.storyboard */; };
 		D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D378FA471E02EF0A00E81AE1 /* Assets.xcassets */; };
 		D378FA4B1E02EF0A00E81AE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D378FA491E02EF0A00E81AE1 /* LaunchScreen.storyboard */; };
 		D378FA561E02EF0A00E81AE1 /* IPCanaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA551E02EF0A00E81AE1 /* IPCanaryTests.swift */; };
 		D378FA611E02EF0A00E81AE1 /* IPCanaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA601E02EF0A00E81AE1 /* IPCanaryUITests.swift */; };
 		D378FA6F1E0390D400E81AE1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA6E1E0390D400E81AE1 /* MainViewModel.swift */; };
+		D378FA781E03B96600E81AE1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D378FA771E03B96600E81AE1 /* MainViewController.xib */; };
+		D378FA7A1E04448000E81AE1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA791E04448000E81AE1 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,6 @@
 		D378FA3D1E02EF0A00E81AE1 /* IPCanary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPCanary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D378FA421E02EF0A00E81AE1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D378FA451E02EF0A00E81AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D378FA471E02EF0A00E81AE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D378FA4A1E02EF0A00E81AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D378FA4C1E02EF0A00E81AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +60,8 @@
 		D378FA601E02EF0A00E81AE1 /* IPCanaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCanaryUITests.swift; sourceTree = "<group>"; };
 		D378FA621E02EF0A00E81AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D378FA6E1E0390D400E81AE1 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		D378FA771E03B96600E81AE1 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D378FA791E04448000E81AE1 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FFF0C2FB40F6FAB7FF0A813D /* Pods-IPCanaryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPCanaryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IPCanaryUITests/Pods-IPCanaryUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,9 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */,
+				D378FA791E04448000E81AE1 /* NetworkManager.swift */,
 				D378FA6E1E0390D400E81AE1 /* MainViewModel.swift */,
 				D378FA421E02EF0A00E81AE1 /* MainViewController.swift */,
-				D378FA441E02EF0A00E81AE1 /* Main.storyboard */,
+				D378FA771E03B96600E81AE1 /* MainViewController.xib */,
 				D378FA471E02EF0A00E81AE1 /* Assets.xcassets */,
 				D378FA491E02EF0A00E81AE1 /* LaunchScreen.storyboard */,
 				D378FA4C1E02EF0A00E81AE1 /* Info.plist */,
@@ -286,7 +289,7 @@
 			files = (
 				D378FA4B1E02EF0A00E81AE1 /* LaunchScreen.storyboard in Resources */,
 				D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */,
-				D378FA461E02EF0A00E81AE1 /* Main.storyboard in Resources */,
+				D378FA781E03B96600E81AE1 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D378FA7A1E04448000E81AE1 /* NetworkManager.swift in Sources */,
 				D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */,
 				D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */,
 				D378FA6F1E0390D400E81AE1 /* MainViewModel.swift in Sources */,
@@ -487,14 +491,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D378FA441E02EF0A00E81AE1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D378FA451E02EF0A00E81AE1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D378FA491E02EF0A00E81AE1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
