@@ -248,15 +248,18 @@
 				TargetAttributes = {
 					D378FA3C1E02EF0A00E81AE1 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = L2KLWCGU85;
 						ProvisioningStyle = Automatic;
 					};
 					D378FA501E02EF0A00E81AE1 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = L2KLWCGU85;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D378FA3C1E02EF0A00E81AE1;
 					};
 					D378FA5B1E02EF0A00E81AE1 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = L2KLWCGU85;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D378FA3C1E02EF0A00E81AE1;
 					};
@@ -542,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -585,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -598,6 +601,7 @@
 			baseConfigurationReference = 7B69E078CF90251DA8277DF7 /* Pods-IPCanary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -612,6 +616,7 @@
 			baseConfigurationReference = 7FEF1E7F51BF5385E7890345 /* Pods-IPCanary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -627,6 +632,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanaryTests;
@@ -642,6 +648,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanaryTests;
@@ -656,6 +663,7 @@
 			baseConfigurationReference = A077B7DDA0BE77EE150BD65B /* Pods-IPCanaryUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanaryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanaryUITests;
@@ -670,6 +678,7 @@
 			baseConfigurationReference = FFF0C2FB40F6FAB7FF0A813D /* Pods-IPCanaryUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanaryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanaryUITests;

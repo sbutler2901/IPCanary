@@ -90,11 +90,11 @@ class MainViewModel: NetworkManagerUpdatable {
     }
     
     func refreshIP() {
-        networkManager.refreshIP()
+        networkManager.refreshIP(completionHandler: nil)
     }
     
     func loadData() {
         // TODO : get the ip
-        networkManager.refreshIP()
+        networkManager.refreshIP(completionHandler: nil)
     }
 }

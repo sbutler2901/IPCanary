@@ -9,7 +9,9 @@
 import XCTest
 
 class IPCanaryUITests: XCTestCase {
-        
+    
+    var app: XCUIApplication!
+    
     override func setUp() {
         super.setUp()
         
@@ -21,11 +23,33 @@ class IPCanaryUITests: XCTestCase {
         XCUIApplication().launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testDisplayAtLoad() {
+        let refreshBtn = app.buttons["Refresh Button"]
+        let lastUpdateOutputLabel = app.staticTexts["Last Update Output Label"]
+        let lastChangeOutputLabel = app.staticTexts["Last Change Output Label"]
+        
+        XCTAssert(refreshBtn.exists)
+        XCTAssert(lastUpdateOutputLabel.exists)
+        XCTAssert(lastChangeOutputLabel.exists)
+        
+        
+        refreshBtn.tap()
+        //XCTAssertEqual(lastUpdateOutputLabel.val, lastChangeOutputLabel.value)
+        
+        
+        //app.staticTexts["IP Label"].tap()
+        //app.staticTexts["Last Change Label"].tap()
+        //app.staticTexts["Last Update Label"].tap()
+
+    
     }
     
     func testExample() {
