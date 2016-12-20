@@ -36,22 +36,25 @@ class IPCanaryTests: XCTestCase {
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         var newAddress = "0.0.0.1"
+        let city = "Ocean City"
+        let country = "United States"
+        let hostname = "Hostname"
 
-        ipAddress = IPAddress(address: newAddress)
+        ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname, date: Date())
         XCTAssertEqual(ipAddress.getAddress(), newAddress)
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         newAddress = "0.0.0.2"
         let newDate0 = Date()
 
-        ipAddress = IPAddress(address: newAddress, date: newDate0)
+        ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate0)
         XCTAssertEqual(ipAddress.getAddress(), newAddress)
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         // IP change
         newAddress = "0.0.0.3"
         let newDate1 = Date()
-        ipAddress.setAddress(address: newAddress, date: newDate1)
+        ipAddress.setAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate1)
         XCTAssertEqual(ipAddress.getAddress(), newAddress)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), newDate1)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), ipAddress.getLastChangeDate())
@@ -59,12 +62,10 @@ class IPCanaryTests: XCTestCase {
         // No IP change
         let newDate2 = Date()
         
-        ipAddress.setAddress(address: newAddress, date: newDate2)
+        ipAddress.setAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate2)
         XCTAssertEqual(ipAddress.getAddress(), newAddress)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), newDate2)
         XCTAssertNotEqual(ipAddress.getLastUpdateDate(), ipAddress.getLastChangeDate())
-        
-
     }
     
     // MARK: - Network Manager Tests
@@ -76,9 +77,22 @@ class IPCanaryTests: XCTestCase {
     func testNetworkManagerUpdateIP() {
         let previousUpdateDate = networkManager.currentIPAddress.getLastUpdateDate()
         
-  //      networkManager.refreshIP()
+        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
-//        XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
+        networkManager.refreshIP() { string in
+            XCTAssertNotNil(string, "Expected non-nil string")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
+        
+        XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
+    }
+    
+    func testNetworkManagerParseRequestedData() {
+        /*let jsonData: Data = Data("{\"ip\":\"209.222.19.251\",\"ip_decimal\":3520992251,\"country\":\"United States\",\"city\":\"Matawan\",\"hostname\":\"209.222.19.251.adsl.inet-telecom.org\"}")
+        networkManager.parseRequestedData(jsonData)*/
+        
     }
     
     // MARK: - View Model Tests
@@ -96,8 +110,14 @@ class IPCanaryTests: XCTestCase {
         
         XCTAssertNil(networkManager.delegate)
 
-        networkManager.refreshIP(completionHandler: nil)
+        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
+        networkManager.refreshIP() { string in
+            XCTAssertNotNil(string, "Expected non-nil string")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
     }
     
@@ -113,7 +133,7 @@ class IPCanaryTests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 10.0, handler: nil)
         
         XCTAssertNotNil(networkManager.delegate)
         XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getAddress())
@@ -133,7 +153,7 @@ class IPCanaryTests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 10.0, handler: nil)
         
         //XCTAssertNotNil(networkManager.delegate)
         XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getAddress())

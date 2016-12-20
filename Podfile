@@ -9,6 +9,7 @@ target 'IPCanary' do
 
 #pod 'ReactiveCocoa', '5.0.0-alpha.3'
 pod 'Alamofire', '~> 4.0'
+pod 'SwiftyJSON'
 
   target 'IPCanaryTests' do
     inherit! :search_paths
