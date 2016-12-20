@@ -31,6 +31,7 @@ class NetworkManager {
     }
     
     private func parseRequestedData(data: Data) {
+        let utf8Text = String(data: data, encoding: .utf8)
         print("Data: \(utf8Text)")
 
         let json = JSON(data: data)

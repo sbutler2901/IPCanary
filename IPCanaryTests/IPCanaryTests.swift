@@ -32,7 +32,10 @@ class IPCanaryTests: XCTestCase {
     
     func testIPAddress() {
         var ipAddress = IPAddress()
-        XCTAssertEqual(ipAddress.getAddress(), "0.0.0.0")
+        XCTAssertEqual(ipAddress.getIPAddress(), "0.0.0.0")
+        XCTAssertEqual(ipAddress.getCity(), "Unknown")
+        XCTAssertEqual(ipAddress.getCountry(), "Unknown")
+        XCTAssertEqual(ipAddress.getHostname(), "Unknown")
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         var newAddress = "0.0.0.1"
@@ -41,21 +44,30 @@ class IPCanaryTests: XCTestCase {
         let hostname = "Hostname"
 
         ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname, date: Date())
-        XCTAssertEqual(ipAddress.getAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getIPAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getCity(), city)
+        XCTAssertEqual(ipAddress.getCountry(), country)
+        XCTAssertEqual(ipAddress.getHostname(), hostname)
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         newAddress = "0.0.0.2"
         let newDate0 = Date()
 
         ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate0)
-        XCTAssertEqual(ipAddress.getAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getIPAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getCity(), city)
+        XCTAssertEqual(ipAddress.getCountry(), country)
+        XCTAssertEqual(ipAddress.getHostname(), hostname)
         XCTAssertEqual(ipAddress.getLastChangeDate(), ipAddress.getLastUpdateDate())
         
         // IP change
         newAddress = "0.0.0.3"
         let newDate1 = Date()
         ipAddress.setAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate1)
-        XCTAssertEqual(ipAddress.getAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getIPAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getCity(), city)
+        XCTAssertEqual(ipAddress.getCountry(), country)
+        XCTAssertEqual(ipAddress.getHostname(), hostname)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), newDate1)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), ipAddress.getLastChangeDate())
         
@@ -63,7 +75,10 @@ class IPCanaryTests: XCTestCase {
         let newDate2 = Date()
         
         ipAddress.setAddress(address: newAddress, city: city, country: country, hostname: hostname, date: newDate2)
-        XCTAssertEqual(ipAddress.getAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getIPAddress(), newAddress)
+        XCTAssertEqual(ipAddress.getCity(), city)
+        XCTAssertEqual(ipAddress.getCountry(), country)
+        XCTAssertEqual(ipAddress.getHostname(), hostname)
         XCTAssertEqual(ipAddress.getLastUpdateDate(), newDate2)
         XCTAssertNotEqual(ipAddress.getLastUpdateDate(), ipAddress.getLastChangeDate())
     }
@@ -99,7 +114,7 @@ class IPCanaryTests: XCTestCase {
     
     func testMainViewModelIP() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getAddress())
+        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
         XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
     }
@@ -136,7 +151,7 @@ class IPCanaryTests: XCTestCase {
         waitForExpectations(timeout: 10.0, handler: nil)
         
         XCTAssertNotNil(networkManager.delegate)
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getAddress())
+        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
         XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
     }
@@ -156,7 +171,7 @@ class IPCanaryTests: XCTestCase {
         waitForExpectations(timeout: 10.0, handler: nil)
         
         //XCTAssertNotNil(networkManager.delegate)
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getAddress())
+        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
         XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
     }
