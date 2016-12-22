@@ -13,6 +13,9 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     // MARK: - IBOutlets
     
     @IBOutlet var currentIPLabel: UILabel!
+    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var countryLabel: UILabel!
+    @IBOutlet var hostnameLabel: UILabel!
     @IBOutlet var ipLastUpdateLabel: UILabel!
     @IBOutlet var ipLastChangedLabel: UILabel!
 

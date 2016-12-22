@@ -84,6 +84,7 @@ class IPCanaryTests: XCTestCase {
     }
     
     // MARK: - Network Manager Tests
+    // FIXME: - Status code 429 (Too many requests) from server
     
     func testNetworkManagerHasIP() {
         XCTAssertNotNil(networkManager.currentIPAddress)
@@ -95,15 +96,22 @@ class IPCanaryTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
         networkManager.refreshIP() { string in
-            XCTAssertNotNil(string, "Expected non-nil string")
-            expectation.fulfill()
+            // Must unwrap the optional string before testing
+            if let stringUnwrapped = string {
+                //print("Test: \(stringUnwrapped)")
+                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                expectation.fulfill()
+            } else {
+                XCTFail()
+            }
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)
-        
         XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
     }
     
+    // TODO: - mock requested data
+    // FIXME: - how to handle private functions?
     func testNetworkManagerParseRequestedData() {
         /*let jsonData: Data = Data("{\"ip\":\"209.222.19.251\",\"ip_decimal\":3520992251,\"country\":\"United States\",\"city\":\"Matawan\",\"hostname\":\"209.222.19.251.adsl.inet-telecom.org\"}")
         networkManager.parseRequestedData(jsonData)*/
@@ -128,12 +136,19 @@ class IPCanaryTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
         networkManager.refreshIP() { string in
-            XCTAssertNotNil(string, "Expected non-nil string")
-            expectation.fulfill()
+            // Must unwrap the optional string before testing
+            if let stringUnwrapped = string {
+                print("stringUnwrapped: \(stringUnwrapped)")
+                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                expectation.fulfill()
+            } else {
+                XCTFail()
+            }
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)
-        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
+        
+        XCTAssertNotEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
     }
     
     // With view model established as delegate
@@ -144,8 +159,14 @@ class IPCanaryTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
         networkManager.refreshIP() { string in
-            XCTAssertNotNil(string, "Expected non-nil string")
-            expectation.fulfill()
+            // Must unwrap the optional string before testing
+            if let stringUnwrapped = string {
+                print("stringUnwrapped: \(stringUnwrapped)")
+                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                expectation.fulfill()
+            } else {
+                XCTFail()
+            }
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)
@@ -164,8 +185,14 @@ class IPCanaryTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
         networkManager.refreshIP() { string in
-            XCTAssertNotNil(string, "Expected non-nil string")
-            expectation.fulfill()
+            // Must unwrap the optional string before testing
+            if let stringUnwrapped = string {
+                //print("Test: \(stringUnwrapped)")
+                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                expectation.fulfill()
+            } else {
+                XCTFail()
+            }
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)

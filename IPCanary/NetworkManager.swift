@@ -31,17 +31,20 @@ class NetworkManager {
     }
     
     private func parseRequestedData(data: Data) {
-        let utf8Text = String(data: data, encoding: .utf8)
-        print("Data: \(utf8Text)")
+        //let utf8Text = String(data: data, encoding: .utf8)
+        //print("Pre-parsed Data: \(utf8Text)")
 
         let json = JSON(data: data)
+        
+        print("Post-parsed Data: \(json)")
+        
         self.currentIPAddress.setAddress(address: json["ip"].stringValue, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue, date: Date())
     }
     
     // TODO:
     //  1. Prevent spamming of server
-    //  2. seperate parsing
-    //  3. expand info displayed
+    //  2. expand info displayed
+    //  3. handle various server status codes
     private func networkQueryIP(completionHandler: ((String?)->())?) {
         
         let headers: HTTPHeaders = [
