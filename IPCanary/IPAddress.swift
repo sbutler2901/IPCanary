@@ -24,6 +24,8 @@ class IPAddress {
         self.hostname = "Unknown"
         lastUpdateDate = Date()
         lastChangeDate = lastUpdateDate
+        
+        print("Date: \(lastUpdateDate)")
     }
     
     init(address: String, city: String, country: String, hostname: String ) {
@@ -35,13 +37,25 @@ class IPAddress {
         lastChangeDate = lastUpdateDate
     }
     
-    init(address: String, city: String, country: String, hostname: String, date: Date) {
+    init(address: String, city: String, country: String, hostname: String, date: Date ) {
         self.address = address
         self.city = city
         self.country = country
         self.hostname = hostname
         lastUpdateDate = date
         lastChangeDate = lastUpdateDate
+    }
+    
+    func setAddress(address: String, city: String, country: String, hostname: String) {
+        let newDate = Date()
+        if(self.address != address) {
+            self.lastChangeDate = newDate
+            self.address = address
+            self.city = city
+            self.country = country
+            self.hostname = hostname
+        }
+        self.lastUpdateDate = newDate
     }
     
     func setAddress(address: String, city: String, country: String, hostname: String, date: Date) {
@@ -53,7 +67,6 @@ class IPAddress {
             self.hostname = hostname
         }
         self.lastUpdateDate = date
-        
     }
     
     func getIPAddress() -> String {

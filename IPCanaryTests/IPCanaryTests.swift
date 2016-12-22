@@ -28,7 +28,12 @@ class IPCanaryTests: XCTestCase {
         super.tearDown()
     }
     
+    // TODO: - Ensure tests cover all public interfaces
+    // TODO: - Remove need for completion handler?
+    
+    
     // Mark: - Model Tests
+    // TODO: - Ensure covers all model tests after mods
     
     func testIPAddress() {
         var ipAddress = IPAddress()
@@ -43,7 +48,7 @@ class IPCanaryTests: XCTestCase {
         let country = "United States"
         let hostname = "Hostname"
 
-        ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname, date: Date())
+        ipAddress = IPAddress(address: newAddress, city: city, country: country, hostname: hostname)
         XCTAssertEqual(ipAddress.getIPAddress(), newAddress)
         XCTAssertEqual(ipAddress.getCity(), city)
         XCTAssertEqual(ipAddress.getCountry(), country)
@@ -84,7 +89,6 @@ class IPCanaryTests: XCTestCase {
     }
     
     // MARK: - Network Manager Tests
-    // FIXME: - Status code 429 (Too many requests) from server
     
     func testNetworkManagerHasIP() {
         XCTAssertNotNil(networkManager.currentIPAddress)
@@ -95,11 +99,12 @@ class IPCanaryTests: XCTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
-        networkManager.refreshIP() { string in
+        networkManager.refreshIP() { statusCode in
             // Must unwrap the optional string before testing
-            if let stringUnwrapped = string {
+            if let statusCodeUnwrapped = statusCode {
                 //print("Test: \(stringUnwrapped)")
-                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
+                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
                 expectation.fulfill()
             } else {
                 XCTFail()
@@ -107,18 +112,13 @@ class IPCanaryTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)
+    
         XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
     }
     
-    // TODO: - mock requested data
-    // FIXME: - how to handle private functions?
-    func testNetworkManagerParseRequestedData() {
-        /*let jsonData: Data = Data("{\"ip\":\"209.222.19.251\",\"ip_decimal\":3520992251,\"country\":\"United States\",\"city\":\"Matawan\",\"hostname\":\"209.222.19.251.adsl.inet-telecom.org\"}")
-        networkManager.parseRequestedData(jsonData)*/
-        
-    }
-    
     // MARK: - View Model Tests
+    // FIXME: - Bypass network query by manually updating manager's current ip
+    // FIXME: - Dup tests to handle when mock data has same IP & when IP changes?
     
     func testMainViewModelIP() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
@@ -132,21 +132,17 @@ class IPCanaryTests: XCTestCase {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         
         XCTAssertNil(networkManager.delegate)
-
-        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
-        networkManager.refreshIP() { string in
-            // Must unwrap the optional string before testing
-            if let stringUnwrapped = string {
-                print("stringUnwrapped: \(stringUnwrapped)")
-                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
-                expectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
+        let ipAddress = networkManager.currentIPAddress.getIPAddress()
+        let city = networkManager.currentIPAddress.getCity()
+        let country  = networkManager.currentIPAddress.getCountry()
+        let hostname = networkManager.currentIPAddress.getHostname()
         
-        waitForExpectations(timeout: 10.0, handler: nil)
+        var newUpdateDate = Date()
+        newUpdateDate.addTimeInterval(TimeInterval(10))
+        
+        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+        networkManager.delegate?.ipUpdated()
         
         XCTAssertNotEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
     }
@@ -156,22 +152,36 @@ class IPCanaryTests: XCTestCase {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         networkManager.delegate = mainViewModel
 
-        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
-        
-        networkManager.refreshIP() { string in
-            // Must unwrap the optional string before testing
-            if let stringUnwrapped = string {
-                print("stringUnwrapped: \(stringUnwrapped)")
-                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
-                expectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        
-        waitForExpectations(timeout: 10.0, handler: nil)
+//        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
+//        
+//        networkManager.refreshIP() { statusCode in
+//            // Must unwrap the optional string before testing
+//            if let statusCodeUnwrapped = statusCode {
+//                //print("Test: \(stringUnwrapped)")
+//                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
+//                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
+//                expectation.fulfill()
+//            } else {
+//                XCTFail()
+//            }
+//        }
+//        
+//        waitForExpectations(timeout: 10.0, handler: nil)
         
         XCTAssertNotNil(networkManager.delegate)
+        
+        let ipAddress = networkManager.currentIPAddress.getIPAddress()
+        let city = networkManager.currentIPAddress.getCity()
+        let country  = networkManager.currentIPAddress.getCountry()
+        let hostname = networkManager.currentIPAddress.getHostname()
+        
+        var newUpdateDate = Date()
+        newUpdateDate.addTimeInterval(TimeInterval(10))
+        
+        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+        
+        networkManager.delegate?.ipUpdated()
+        
         XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
         XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
@@ -184,11 +194,12 @@ class IPCanaryTests: XCTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
-        networkManager.refreshIP() { string in
+        networkManager.refreshIP() { statusCode in
             // Must unwrap the optional string before testing
-            if let stringUnwrapped = string {
+            if let statusCodeUnwrapped = statusCode {
                 //print("Test: \(stringUnwrapped)")
-                XCTAssertNotNil(stringUnwrapped, "Expected non-nil string")
+                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
+                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
                 expectation.fulfill()
             } else {
                 XCTFail()
@@ -204,6 +215,7 @@ class IPCanaryTests: XCTestCase {
     }
     
     // Mark: - View Controller Tests
+    // FIXME: - fix view Controller tests
     
 //    func testMainViewControllerDoesUpdateAuto() {
 //        let mainViewModel = MainViewModel(networkManager: networkManager)
