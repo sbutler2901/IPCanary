@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         navigationController = UINavigationController()
-        navigationController.navigationBar.barTintColor = UIColor.darkGray
+        navigationController.navigationBar.barTintColor = UIColor.lightGray
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         let networkManager = NetworkManager()

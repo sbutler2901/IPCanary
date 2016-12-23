@@ -11,6 +11,7 @@ import XCTest
 class IPCanaryUITests: XCTestCase {
     
     var app: XCUIApplication!
+    //var vc: MainViewController!
     
     override func setUp() {
         super.setUp()
@@ -30,6 +31,42 @@ class IPCanaryUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    
+    // Mark: - View Controller Tests
+    // FIXME: - fix view Controller tests
+    
+//    func testMainViewControllerDoesUpdateAuto() {
+//        let networkManager = app.
+//        let mainViewModel = MainViewModel(networkManager: networkManager)
+//        let mainViewController = MainViewController(mainViewModel: mainViewModel)
+//        
+//        let prevIP = mainViewController.currentIPLabel.text
+//        let prevUpdate = mainViewController.ipLastUpdateLabel.text
+//        let prevChange = mainViewController.ipLastChangedLabel.text
+//        
+//        networkManager.delegate = mainViewModel
+//        
+//        XCTAssertNotNil(networkManager.delegate)
+//        
+//        let ipAddress = networkManager.currentIPAddress.getIPAddress()
+//        let city = networkManager.currentIPAddress.getCity()
+//        let country  = networkManager.currentIPAddress.getCountry()
+//        let hostname = networkManager.currentIPAddress.getHostname()
+//        
+//        var newUpdateDate = Date()
+//        newUpdateDate.addTimeInterval(TimeInterval(10))
+//        
+//        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+//        
+//        networkManager.delegate?.ipUpdated()
+//        
+//        XCTAssertEqual(networkManager.currentIPAddress.getIPAddress(), prevIP)
+//        XCTAssertEqual(networkManager.currentIPAddress.getLastUpdateDate().description, prevUpdate)
+//        XCTAssertEqual(networkManager.currentIPAddress.getLastChangeDate().description, prevChange)
+//    }
+    
+    // MARK: - View Tests
     
     func testDisplayAtLoad() {
         let refreshBtn: XCUIElement = app.buttons["Refresh Button"]

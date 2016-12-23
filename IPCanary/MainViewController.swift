@@ -42,6 +42,9 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     func viewModelDidUpdate() {
         currentIPLabel.text = mainViewModel.currentIP
+        cityLabel.text = mainViewModel.city
+        countryLabel.text = mainViewModel.country
+        hostnameLabel.text = mainViewModel.hostname
         ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
         ipLastChangedLabel.text = mainViewModel.ipLastChanged
     }

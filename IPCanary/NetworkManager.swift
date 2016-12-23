@@ -26,8 +26,8 @@ class NetworkManager {
         self.currentIPAddress = IPAddress()
     }
     
-    func refreshIP(completionHandler: ((String?)->())?) {
-        networkQueryIP(completionHandler: completionHandler)
+    func refreshIP() {
+        networkQueryIP()
     }
     
     private func parseRequestedData(data: Data) {
@@ -45,40 +45,32 @@ class NetworkManager {
     //  1. Prevent spamming of server
     //  2. expand info displayed
     //  3. handle various server status codes
-    private func networkQueryIP(completionHandler: ((String?)->())?) {
-        if(completionHandler != nil) {
-            let mockDataString: String = "{\"ip\":\"209.222.19.251\",\"ip_decimal\":3520992251,\"country\":\"United States\",\"city\":\"Matawan\",\"hostname\":\"209.222.19.251.adsl.inet-telecom.org\"}"
-            self.parseRequestedData(data: mockDataString.data(using: .utf8)!)
-            self.delegate?.ipUpdated()
-            completionHandler?("SUCCESS")
-        } else {
-            let headers: HTTPHeaders = [
-                "Accept": "application/json"
-            ]
-            
-            Alamofire.request(host, method: .get, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
-                switch response.result {
-                case .success:
-                    guard let data = response.data else {
-                        print("There was an error getting the IP");
-                        self.currentIPAddress = IPAddress()
-                        self.delegate?.ipUpdated()
-                        //completionHandler?("FAILURE")
-                        break
-                    }
-                    
-                    self.parseRequestedData(data: data)
+    private func networkQueryIP() {
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(host, method: .get, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                guard let data = response.data else {
+                    print("There was an error getting the IP");
+                    self.currentIPAddress = IPAddress()
                     self.delegate?.ipUpdated()
-                    //completionHandler?("SUCCESS")
-                    
-                case .failure(let error):
-                    //print("Request: \(response.request)")
-                    //print("Response: \(response.response)")
-                    print("There was an error requesting the IP: \(error)")
                     //completionHandler?("FAILURE")
+                    break
                 }
+                
+                self.parseRequestedData(data: data)
+                self.delegate?.ipUpdated()
+                //completionHandler?("SUCCESS")
+                
+            case .failure(let error):
+                //print("Request: \(response.request)")
+                //print("Response: \(response.response)")
+                print("There was an error requesting the IP: \(error)")
+                //completionHandler?("FAILURE")
             }
         }
-        
     }
 }

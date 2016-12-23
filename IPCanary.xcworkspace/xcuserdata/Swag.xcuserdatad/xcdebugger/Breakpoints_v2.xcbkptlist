@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IPCanaryTests/IPCanaryTests.swift"
-            timestampString = "504076542.784374"
+            timestampString = "504150085.88572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "testNetworkManagerUpdateIP()"
             landmarkType = "7">
             <Locations>
@@ -62,54 +62,6 @@
                   startingLineNumber = "98"
                   endingLineNumber = "98"
                   offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IPCanaryTests/IPCanaryTests.swift"
-            timestampString = "504076768.647682"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "testNetworkManagerUpdateIP()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IPCanaryTests.IPCanaryTests.testNetworkManagerUpdateIP () -&gt; ()"
-                  moduleName = "IPCanaryTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Swag/CSCI/Programming/Swift/Personal%20Projects/IPCanary/IPCanaryTests/IPCanaryTests.swift"
-                  timestampString = "504068029.031121"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "1205">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IPCanaryTests.IPCanaryTests.(testNetworkManagerUpdateIP () -&gt; ()).(implicit closure #1)"
-                  moduleName = "IPCanaryTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Swag/CSCI/Programming/Swift/Personal%20Projects/IPCanary/IPCanaryTests/IPCanaryTests.swift"
-                  timestampString = "504068029.033559"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "41">
                </Location>
             </Locations>
          </BreakpointContent>

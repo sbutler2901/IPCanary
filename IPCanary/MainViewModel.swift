@@ -17,6 +17,9 @@ class MainViewModel: NetworkManagerUpdatable {
     // MARK: - Variables associated with view/viewController
 
     var currentIP: String
+    var city: String
+    var country: String
+    var hostname: String
     var ipLastUpdate: String
     var ipLastChanged: String
     
@@ -32,23 +35,29 @@ class MainViewModel: NetworkManagerUpdatable {
         //super.init()
     
         currentIP = networkManager.currentIPAddress.getIPAddress()
+        city = networkManager.currentIPAddress.getCity()
+        country = networkManager.currentIPAddress.getCountry()
+        hostname = networkManager.currentIPAddress.getHostname()
         ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
         ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
     }
     
     func ipUpdated() {
         currentIP = networkManager.currentIPAddress.getIPAddress()
+        city = networkManager.currentIPAddress.getCity()
+        country = networkManager.currentIPAddress.getCountry()
+        hostname = networkManager.currentIPAddress.getHostname()
         ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
         ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
         delegate?.viewModelDidUpdate()
     }
     
     func refreshIP() {
-        networkManager.refreshIP(completionHandler: nil)
+        networkManager.refreshIP()
     }
     
     func loadData() {
         // TODO : get the ip
-        networkManager.refreshIP(completionHandler: nil)
+        networkManager.refreshIP()
     }
 }

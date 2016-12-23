@@ -29,11 +29,8 @@ class IPCanaryTests: XCTestCase {
     }
     
     // TODO: - Ensure tests cover all public interfaces
-    // TODO: - Remove need for completion handler?
-    
     
     // Mark: - Model Tests
-    // TODO: - Ensure covers all model tests after mods
     
     func testIPAddress() {
         var ipAddress = IPAddress()
@@ -90,44 +87,39 @@ class IPCanaryTests: XCTestCase {
     
     // MARK: - Network Manager Tests
     
+    // Ensures network manager's current ip has been initialized
     func testNetworkManagerHasIP() {
         XCTAssertNotNil(networkManager.currentIPAddress)
     }
     
+    // Ensures when the network manager makes a new network request, the current IP has been updated
     func testNetworkManagerUpdateIP() {
         let previousUpdateDate = networkManager.currentIPAddress.getLastUpdateDate()
         
-        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
+        //let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
-        networkManager.refreshIP() { statusCode in
-            // Must unwrap the optional string before testing
-            if let statusCodeUnwrapped = statusCode {
-                //print("Test: \(stringUnwrapped)")
-                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
-                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
-                expectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
+        networkManager.refreshIP()
         
-        waitForExpectations(timeout: 10.0, handler: nil)
+        //waitForExpectations(timeout: 10.0, handler: nil)
     
         XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
     }
     
     // MARK: - View Model Tests
-    // FIXME: - Bypass network query by manually updating manager's current ip
     // FIXME: - Dup tests to handle when mock data has same IP & when IP changes?
     
+    // Ensures instance of mainview model's ip variables matches that of network manager's
     func testMainViewModelIP() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
+        XCTAssertEqual(mainViewModel.city, networkManager.currentIPAddress.getCity())
+        XCTAssertEqual(mainViewModel.country, networkManager.currentIPAddress.getCountry())
+        XCTAssertEqual(mainViewModel.hostname, networkManager.currentIPAddress.getHostname())
         XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
         XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
     }
     
-    // Without view model established as delegate
+    // Tests if main view model IP is updated without the view model being established as delegate
     func testMainViewModelIPUpdated() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         
@@ -147,26 +139,10 @@ class IPCanaryTests: XCTestCase {
         XCTAssertNotEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
     }
     
-    // With view model established as delegate
+    // Tests if main view model IP is updated with view model established as delegate
     func testMainViewModelRefreshIP() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         networkManager.delegate = mainViewModel
-
-//        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
-//        
-//        networkManager.refreshIP() { statusCode in
-//            // Must unwrap the optional string before testing
-//            if let statusCodeUnwrapped = statusCode {
-//                //print("Test: \(stringUnwrapped)")
-//                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
-//                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
-//                expectation.fulfill()
-//            } else {
-//                XCTFail()
-//            }
-//        }
-//        
-//        waitForExpectations(timeout: 10.0, handler: nil)
         
         XCTAssertNotNil(networkManager.delegate)
         
@@ -188,52 +164,42 @@ class IPCanaryTests: XCTestCase {
     }
     
     // TODO: - After timer refresh has been implemented. Use Mock Data?
-    func testMainViewModelExternallyRefreshedIP() {
-        let mainViewModel = MainViewModel(networkManager: networkManager)
-        networkManager.delegate = mainViewModel
-        
-        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
-        
-        networkManager.refreshIP() { statusCode in
-            // Must unwrap the optional string before testing
-            if let statusCodeUnwrapped = statusCode {
-                //print("Test: \(stringUnwrapped)")
-                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
-                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
-                expectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        
-        waitForExpectations(timeout: 10.0, handler: nil)
-        
-        //XCTAssertNotNil(networkManager.delegate)
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
-        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
-        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
-    }
     
-    // Mark: - View Controller Tests
-    // FIXME: - fix view Controller tests
+    // Mock data code:
     
-//    func testMainViewControllerDoesUpdateAuto() {
+//        let mockDataString: String = "{\"ip\":\"209.222.19.251\",\"ip_decimal\":3520992251,\"country\":\"United States\",\"city\":\"Matawan\",\"hostname\":\"209.222.19.251.adsl.inet-telecom.org\"}"
+//        self.parseRequestedData(data: mockDataString.data(using: .utf8)!)
+//        self.delegate?.ipUpdated()
+//        completionHandler?("SUCCESS")
+    
+    // End Mock data
+    
+//    func testMainViewModelExternallyRefreshedIP() {
 //        let mainViewModel = MainViewModel(networkManager: networkManager)
-//        let mainViewController = MainViewController(mainViewModel: mainViewModel)
+//        networkManager.delegate = mainViewModel
 //        
-//        let prevIP = mainViewController.ipLabel.text
-//        let prevUpdate = mainViewController.ipLastUpdateLabel.text
-//        let prevChange = mainViewController.ipLastChangeLabel.text
-//        networkManager.networkQueryIP()
+////        let expectation: XCTestExpectation = self.expectation(description: "Network Request")
+////        
+////        networkManager.refreshIP() { statusCode in
+////            // Must unwrap the optional string before testing
+////            if let statusCodeUnwrapped = statusCode {
+////                //print("Test: \(stringUnwrapped)")
+////                XCTAssertEqual(statusCodeUnwrapped, "SUCCESS")
+////                //XCTAssertNotNil(statusCodeUnwrapped, "Expected non-nil string")
+////                expectation.fulfill()
+////            } else {
+////                XCTFail()
+////            }
+////        }
+////        
+////        waitForExpectations(timeout: 10.0, handler: nil)
 //        
-//        XCTAssertEqual(networkManager.currentIPAddress.getAddress(), prevIP)
-//        XCTAssertEqual(networkManager.currentIPAddress.getLastUpdateDate().description, prevUpdate)
-//        XCTAssertEqual(networkManager.currentIPAddress.getLastChangeDate().description, prevChange)
-//        
-//        XCTAssertEqual(networkManager.currentIPAddress.getAddress(), prevIP)
-//        XCTAssertEqual(networkManager.currentIPAddress.getLastUpdateDate().description, prevUpdate)
-//        XCTAssertEqual(networkManager.currentIPAddress.getLastChangeDate().description, prevChange)    }
-    
+//        //XCTAssertNotNil(networkManager.delegate)
+//        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
+//        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
+//        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
+//    }
+
     // MARK: - Performance tests
     
     func testPerformanceExample() {
