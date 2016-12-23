@@ -13,6 +13,9 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     // MARK: - IBOutlets
     
     @IBOutlet var currentIPLabel: UILabel!
+    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var countryLabel: UILabel!
+    @IBOutlet var hostnameLabel: UILabel!
     @IBOutlet var ipLastUpdateLabel: UILabel!
     @IBOutlet var ipLastChangedLabel: UILabel!
 
@@ -39,6 +42,9 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     func viewModelDidUpdate() {
         currentIPLabel.text = mainViewModel.currentIP
+        cityLabel.text = mainViewModel.city
+        countryLabel.text = mainViewModel.country
+        hostnameLabel.text = mainViewModel.hostname
         ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
         ipLastChangedLabel.text = mainViewModel.ipLastChanged
     }

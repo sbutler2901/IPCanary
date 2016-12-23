@@ -9,7 +9,10 @@
 import XCTest
 
 class IPCanaryUITests: XCTestCase {
-        
+    
+    var app: XCUIApplication!
+    //var vc: MainViewController!
+    
     override func setUp() {
         super.setUp()
         
@@ -21,11 +24,77 @@ class IPCanaryUITests: XCTestCase {
         XCUIApplication().launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    
+    // Mark: - View Controller Tests
+    // FIXME: - fix view Controller tests
+    
+//    func testMainViewControllerDoesUpdateAuto() {
+//        let networkManager = app.
+//        let mainViewModel = MainViewModel(networkManager: networkManager)
+//        let mainViewController = MainViewController(mainViewModel: mainViewModel)
+//        
+//        let prevIP = mainViewController.currentIPLabel.text
+//        let prevUpdate = mainViewController.ipLastUpdateLabel.text
+//        let prevChange = mainViewController.ipLastChangedLabel.text
+//        
+//        networkManager.delegate = mainViewModel
+//        
+//        XCTAssertNotNil(networkManager.delegate)
+//        
+//        let ipAddress = networkManager.currentIPAddress.getIPAddress()
+//        let city = networkManager.currentIPAddress.getCity()
+//        let country  = networkManager.currentIPAddress.getCountry()
+//        let hostname = networkManager.currentIPAddress.getHostname()
+//        
+//        var newUpdateDate = Date()
+//        newUpdateDate.addTimeInterval(TimeInterval(10))
+//        
+//        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+//        
+//        networkManager.delegate?.ipUpdated()
+//        
+//        XCTAssertEqual(networkManager.currentIPAddress.getIPAddress(), prevIP)
+//        XCTAssertEqual(networkManager.currentIPAddress.getLastUpdateDate().description, prevUpdate)
+//        XCTAssertEqual(networkManager.currentIPAddress.getLastChangeDate().description, prevChange)
+//    }
+    
+    // MARK: - View Tests
+    
+    func testDisplayAtLoad() {
+        let refreshBtn: XCUIElement = app.buttons["Refresh Button"]
+        let ipAddressLabel: XCUIElement = app.staticTexts["IP Label"]
+        let cityLabel: XCUIElement = app.staticTexts["City Label"]
+        let countryLabel: XCUIElement = app.staticTexts["Country Label"]
+        let hostnameLabel: XCUIElement = app.staticTexts["Hostname Label"]
+        let lastUpdateOutputLabel: XCUIElement = app.staticTexts["Last Update Output Label"]
+        let lastChangeOutputLabel: XCUIElement = app.staticTexts["Last Change Output Label"]
+        
+        XCTAssert(refreshBtn.exists)
+        XCTAssert(ipAddressLabel.exists)
+        XCTAssert(cityLabel.exists)
+        XCTAssert(countryLabel.exists)
+        XCTAssert(hostnameLabel.exists)
+        XCTAssert(lastUpdateOutputLabel.exists)
+        XCTAssert(lastChangeOutputLabel.exists)
+        
+        
+        refreshBtn.tap()
+        //XCTAssertEqual(lastUpdateOutputLabel.val, lastChangeOutputLabel.value)
+        
+        
+        //app.staticTexts["IP Label"].tap()
+        //app.staticTexts["Last Change Label"].tap()
+        //app.staticTexts["Last Update Label"].tap()
+
+    
     }
     
     func testExample() {

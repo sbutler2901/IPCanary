@@ -7,16 +7,16 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
-let host = "ifconfig.co"
+let host = "https://ifconfig.co"
 
 protocol NetworkManagerUpdatable {
     func ipUpdated()
 }
 
 class NetworkManager {
-    
-    var tmpCtr: Int = 0
     
     var currentIPAddress: IPAddress
     
@@ -30,21 +30,47 @@ class NetworkManager {
         networkQueryIP()
     }
     
-    func networkQueryIP() {
-        // TODO: - http update
-        let newLastUpdateDate = Date()
-        var newAddress: String
-        tmpCtr += 1
+    private func parseRequestedData(data: Data) {
+        //let utf8Text = String(data: data, encoding: .utf8)
+        //print("Pre-parsed Data: \(utf8Text)")
+
+        let json = JSON(data: data)
         
-        if(tmpCtr % 2 == 0) {
-            newAddress = "0.0.0."
-            newAddress += tmpCtr.description
-        } else {
-            newAddress = currentIPAddress.getAddress()
+        print("Post-parsed Data: \(json)")
+        
+        self.currentIPAddress.setAddress(address: json["ip"].stringValue, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
+    }
+    
+    // TODO:
+    //  1. Prevent spamming of server
+    //  2. expand info displayed
+    //  3. handle various server status codes
+    private func networkQueryIP() {
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(host, method: .get, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                guard let data = response.data else {
+                    print("There was an error getting the IP");
+                    self.currentIPAddress = IPAddress()
+                    self.delegate?.ipUpdated()
+                    //completionHandler?("FAILURE")
+                    break
+                }
+                
+                self.parseRequestedData(data: data)
+                self.delegate?.ipUpdated()
+                //completionHandler?("SUCCESS")
+                
+            case .failure(let error):
+                //print("Request: \(response.request)")
+                //print("Response: \(response.response)")
+                print("There was an error requesting the IP: \(error)")
+                //completionHandler?("FAILURE")
+            }
         }
-        
-        
-        self.currentIPAddress.setAddress(address: newAddress, date: newLastUpdateDate)
-        delegate?.ipUpdated()
     }
 }

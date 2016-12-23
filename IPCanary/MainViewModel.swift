@@ -8,52 +8,6 @@
 
 import Foundation
 
-class IPAddress {
-    
-    private var address: String
-    private var lastUpdateDate: Date
-    private var lastChangeDate: Date
-    
-    init() {
-        address = "0.0.0.0"
-        lastUpdateDate = Date()
-        lastChangeDate = lastUpdateDate
-    }
-    
-    init(address: String) {
-        self.address = address
-        lastUpdateDate = Date()
-        lastChangeDate = lastUpdateDate
-    }
-    
-    init(address: String, date: Date) {
-        self.address = address
-        lastUpdateDate = date
-        lastChangeDate = lastUpdateDate
-    }
-    
-    func setAddress(address: String, date: Date) {
-        if(self.address != address) {
-            self.lastChangeDate = date
-            self.address = address
-        }
-        self.lastUpdateDate = date
-
-    }
-    
-    func getAddress() -> String {
-        return address
-    }
-    
-    func getLastUpdateDate() -> Date {
-        return lastUpdateDate
-    }
-    
-    func getLastChangeDate() -> Date {
-        return lastChangeDate
-    }
-}
-
 protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
 }
@@ -63,6 +17,9 @@ class MainViewModel: NetworkManagerUpdatable {
     // MARK: - Variables associated with view/viewController
 
     var currentIP: String
+    var city: String
+    var country: String
+    var hostname: String
     var ipLastUpdate: String
     var ipLastChanged: String
     
@@ -77,13 +34,19 @@ class MainViewModel: NetworkManagerUpdatable {
         self.networkManager = networkManager
         //super.init()
     
-        currentIP = networkManager.currentIPAddress.getAddress()
+        currentIP = networkManager.currentIPAddress.getIPAddress()
+        city = networkManager.currentIPAddress.getCity()
+        country = networkManager.currentIPAddress.getCountry()
+        hostname = networkManager.currentIPAddress.getHostname()
         ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
         ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
     }
     
     func ipUpdated() {
-        currentIP = networkManager.currentIPAddress.getAddress()
+        currentIP = networkManager.currentIPAddress.getIPAddress()
+        city = networkManager.currentIPAddress.getCity()
+        country = networkManager.currentIPAddress.getCountry()
+        hostname = networkManager.currentIPAddress.getHostname()
         ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
         ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
         delegate?.viewModelDidUpdate()
