@@ -21,7 +21,8 @@ class NetworkManager {
     //MARK: - Class Variables
     
     private var lastRequestDate: Date
-    private let minRequestsWaitTime: Int = 15           // Number of seconds wait period until next network request sent
+    private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
+    private let autoRefreshFreq: Double = 60.0               // Number of seconds before the IP address is automatically refreshed
     
     var currentIPAddress: IPAddress
     var delegate: NetworkManagerUpdatable?
@@ -32,6 +33,9 @@ class NetworkManager {
         self.currentIPAddress = IPAddress()
         self.lastRequestDate = Date()
         networkQueryIP()
+        Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
+            self.refreshIP()
+        })
     }
     
     /// Makes a network request to retrieve current IP address and other info
@@ -39,7 +43,7 @@ class NetworkManager {
         let currentRequestDate = Date()
         let secondsSinceLastRequests = currentRequestDate.seconds(from: lastRequestDate)
         
-        if(secondsSinceLastRequests >= minRequestsWaitTime) {
+        if(secondsSinceLastRequests >= spamRequestsWaitTime) {
             networkQueryIP()
         } else {
             print("Too many consecutive requests. \(secondsSinceLastRequests)sec since last request")
