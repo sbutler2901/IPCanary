@@ -18,18 +18,38 @@ protocol NetworkManagerUpdatable {
 
 class NetworkManager {
     
-    var currentIPAddress: IPAddress
+    //MARK: - Class Variables
     
+    private var lastRequestDate: Date
+    private let minRequestsWaitTime: Int = 15           // Number of seconds wait period until next network request sent
+    
+    var currentIPAddress: IPAddress
     var delegate: NetworkManagerUpdatable?
 
+    // MARK: - Class Functions
+    
     init() {
         self.currentIPAddress = IPAddress()
-    }
-    
-    func refreshIP() {
+        self.lastRequestDate = Date()
         networkQueryIP()
     }
     
+    /// Makes a network request to retrieve current IP address and other info
+    func refreshIP() {
+        let currentRequestDate = Date()
+        let secondsSinceLastRequests = currentRequestDate.seconds(from: lastRequestDate)
+        
+        if(secondsSinceLastRequests >= minRequestsWaitTime) {
+            networkQueryIP()
+        } else {
+            print("Too many consecutive requests. \(secondsSinceLastRequests)sec since last request")
+        }
+    }
+    
+    
+    /// Parses raw network JSON data & updates current IP Address' info
+    ///
+    /// - Parameter data: Raw JSON data returned from network request to be parsed
     private func parseRequestedData(data: Data) {
         //let utf8Text = String(data: data, encoding: .utf8)
         //print("Pre-parsed Data: \(utf8Text)")
@@ -41,10 +61,7 @@ class NetworkManager {
         self.currentIPAddress.setAddress(address: json["ip"].stringValue, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
     }
     
-    // TODO:
-    //  1. Prevent spamming of server
-    //  2. expand info displayed
-    //  3. handle various server status codes
+    // TODO: 1. handle various server status codes
     private func networkQueryIP() {
         let headers: HTTPHeaders = [
             "Accept": "application/json"
@@ -57,19 +74,17 @@ class NetworkManager {
                     print("There was an error getting the IP");
                     self.currentIPAddress = IPAddress()
                     self.delegate?.ipUpdated()
-                    //completionHandler?("FAILURE")
                     break
                 }
                 
                 self.parseRequestedData(data: data)
                 self.delegate?.ipUpdated()
-                //completionHandler?("SUCCESS")
+                self.lastRequestDate = Date()
                 
             case .failure(let error):
                 //print("Request: \(response.request)")
                 //print("Response: \(response.response)")
                 print("There was an error requesting the IP: \(error)")
-                //completionHandler?("FAILURE")
             }
         }
     }

@@ -25,7 +25,7 @@ class IPAddress {
         lastUpdateDate = Date()
         lastChangeDate = lastUpdateDate
         
-        print("Date: \(lastUpdateDate)")
+        //print("Date: \(lastUpdateDate)")
     }
     
     init(address: String, city: String, country: String, hostname: String ) {
