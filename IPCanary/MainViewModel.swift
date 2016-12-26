@@ -58,6 +58,6 @@ class MainViewModel: NetworkManagerUpdatable {
     
     func loadData() {
         // TODO : get the ip
-        networkManager.refreshIP()
+        //networkManager.refreshIP()
     }
 }
