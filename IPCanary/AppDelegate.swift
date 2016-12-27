@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.barTintColor = UIColor.lightGray
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-        let networkManager = NetworkManager()
+        let notificationHandler = NotificationHandler()
+        
+        let networkManager = NetworkManager(notificationHandler: notificationHandler)
         
         let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
         networkManager.delegate = mainViewModel
@@ -36,7 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
-
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted,error) in
+            notificationHandler.notificationsActive = granted
+            UNUserNotificationCenter.current().delegate = notificationHandler
+        })
+        //application.registerUserNotificationSettings(UNNotificationSettings())
         
         return true
     }

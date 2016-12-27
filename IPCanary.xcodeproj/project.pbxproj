@@ -11,6 +11,7 @@
 		B2A7369FDA84F7E42D61FE68 /* Pods_IPCanaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */; };
 		B6F81BA6C6968D89F0EFA54B /* Pods_IPCanaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF47A40F680B03031CCD6C /* Pods_IPCanaryUITests.framework */; };
 		D3095DF01E11623100CDB7DA /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095DEF1E11623100CDB7DA /* Date_Extension.swift */; };
+		D3095DF21E11DF7500CDB7DA /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095DF11E11DF7500CDB7DA /* NotificationHandler.swift */; };
 		D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */; };
 		D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA421E02EF0A00E81AE1 /* MainViewController.swift */; };
 		D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D378FA471E02EF0A00E81AE1 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		A077B7DDA0BE77EE150BD65B /* Pods-IPCanaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPCanaryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IPCanaryUITests/Pods-IPCanaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IPCanaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3095DEF1E11623100CDB7DA /* Date_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
+		D3095DF11E11DF7500CDB7DA /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		D378FA3D1E02EF0A00E81AE1 /* IPCanary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPCanary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D378FA421E02EF0A00E81AE1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -146,8 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				D3095DEF1E11623100CDB7DA /* Date_Extension.swift */,
-				D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */,
 				D3C00B6B1E09114F00A5C50E /* IPAddress.swift */,
+				D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */,
+				D3095DF11E11DF7500CDB7DA /* NotificationHandler.swift */,
 				D378FA791E04448000E81AE1 /* NetworkManager.swift */,
 				D378FA6E1E0390D400E81AE1 /* MainViewModel.swift */,
 				D378FA421E02EF0A00E81AE1 /* MainViewController.swift */,
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D378FA7A1E04448000E81AE1 /* NetworkManager.swift in Sources */,
+				D3095DF21E11DF7500CDB7DA /* NotificationHandler.swift in Sources */,
 				D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */,
 				D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */,
 				D3095DF01E11623100CDB7DA /* Date_Extension.swift in Sources */,
