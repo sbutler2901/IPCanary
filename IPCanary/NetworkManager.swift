@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import UserNotifications
 
 let host = "https://ifconfig.co"
 
@@ -24,14 +25,17 @@ class NetworkManager {
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
     private let autoRefreshFreq: Double = 60.0               // Number of seconds before the IP address is automatically refreshed
     
+    let notificationManager: NotificationManager
+    
     var currentIPAddress: IPAddress
     var delegate: NetworkManagerUpdatable?
 
     // MARK: - Class Functions
     
-    init() {
+    init(notificationManager: NotificationManager) {
         self.currentIPAddress = IPAddress()
         self.lastRequestDate = Date()
+        self.notificationManager = notificationManager
         networkQueryIP()
         Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
             self.refreshIP()
@@ -49,6 +53,7 @@ class NetworkManager {
             print("Too many consecutive requests. \(secondsSinceLastRequests)sec since last request")
         }
     }
+
     
     
     /// Parses raw network JSON data & updates current IP Address' info
@@ -59,10 +64,16 @@ class NetworkManager {
         //print("Pre-parsed Data: \(utf8Text)")
 
         let json = JSON(data: data)
+        let newIP = json["ip"].stringValue
         
         print("Post-parsed Data: \(json)")
         
-        self.currentIPAddress.setAddress(address: json["ip"].stringValue, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
+        // Uncomment when finished testing
+        //if(self.currentIPAddress.getIPAddress() != newIP) {
+        self.notificationManager.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
+        //}
+        
+        self.currentIPAddress.setAddress(address: newIP, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
     }
     
     // TODO: 1. handle various server status codes
