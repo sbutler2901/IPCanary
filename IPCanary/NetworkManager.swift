@@ -70,7 +70,7 @@ class NetworkManager {
         
         // Uncomment when finished testing
         //if(self.currentIPAddress.getIPAddress() != newIP) {
-        self.notificationManager.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5)
+        self.notificationManager.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
         //}
         
         self.currentIPAddress.setAddress(address: newIP, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)

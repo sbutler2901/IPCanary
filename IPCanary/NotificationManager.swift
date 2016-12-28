@@ -21,9 +21,8 @@ class NotificationManager: NSObject {
     }
     
     func registerForNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted,error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (granted,error) in
             if granted {
-                //self.setupAndGenerateLocalNotification()
                 UNUserNotificationCenter.current().delegate = self
                 print("NotificationManager: The delegate was set")
             }
@@ -32,27 +31,30 @@ class NotificationManager: NSObject {
     }
     
     //TODO: - Delete/update previous notifications if new ip change?
-    func notifyUserOnce(title: String, subtitle: String, body: String?, waitTime: Int) {
+    func notifyUserOnce(title: String, subtitle: String, body: String?, waitTime: TimeInterval) {
         if(notificationsActive) {
             
-            // 1
-            //let highFiveAction = UNNotificationAction(identifier: "Testid", title: "High Five", options: [])
+            let notificationCenter = UNUserNotificationCenter.current()
             
-            let category = UNNotificationCategory(identifier: "test", actions: [], intentIdentifiers: [], options: .customDismissAction)
-            UNUserNotificationCenter.current().setNotificationCategories([category])
+//            let category = UNNotificationCategory(identifier: "test", actions: [], intentIdentifiers: [], options: .customDismissAction)
+//            notificationCenter.setNotificationCategories([category])
             
             let content = UNMutableNotificationContent()
             content.title = title
             content.subtitle = subtitle
+            //guard content.body = body
             content.badge = 1
+            content.sound = UNNotificationSound.default()
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(waitTime), repeats: false)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: waitTime, repeats: false)
             
             notificationIDcntr += 1
             let requestIdentifer = "notification.\(notificationIDcntr)"
             let request = UNNotificationRequest(identifier: requestIdentifer, content: content, trigger: trigger)
 
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            
+            notificationCenter.add(request, withCompletionHandler: { error in
                 if(error != nil) {
                     print("NotificationManager: The user notification of was not successfully scheduled: \(error)")
                 } else {
@@ -60,14 +62,14 @@ class NotificationManager: NSObject {
                 }
             })
             
-            UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: { notifications in
+            notificationCenter.getDeliveredNotifications(completionHandler: { notifications in
                 for noti in notifications {
                     print("NotificationManager: Date of notification: \(noti.date)")
                 }
                 print("NotificationManager: Num successful delivered = \(notifications.count)")
             })
             
-            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { notificationRequests in
+            notificationCenter.getPendingNotificationRequests(completionHandler: { notificationRequests in
                 for notiRequest in notificationRequests {
                     print("NotificationManager: Pending Notification identifier: \(notiRequest.identifier)")
                 }
@@ -86,6 +88,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     
     /// Handles Notification Actions resulting from user interaction with the notifications
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("NotificationManager: Notification interacted with by user")
         switch response.actionIdentifier {
             
             // NotificationActions is a custom String enum I've defined
