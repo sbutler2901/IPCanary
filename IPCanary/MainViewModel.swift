@@ -32,7 +32,6 @@ class MainViewModel: NetworkManagerUpdatable {
     // MARK: - Init - initialize variables to be used by view/viewcontroller
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
-        //super.init()
     
         currentIP = networkManager.currentIPAddress.getIPAddress()
         city = networkManager.currentIPAddress.getCity()

@@ -12,6 +12,10 @@
 		B6F81BA6C6968D89F0EFA54B /* Pods_IPCanaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF47A40F680B03031CCD6C /* Pods_IPCanaryUITests.framework */; };
 		D3095DF01E11623100CDB7DA /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095DEF1E11623100CDB7DA /* Date_Extension.swift */; };
 		D3095DF21E11DF7500CDB7DA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095DF11E11DF7500CDB7DA /* NotificationManager.swift */; };
+		D350B20E1E14814B00C4ED53 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350B20D1E14814B00C4ED53 /* NotificationCenter.framework */; };
+		D350B2111E14814B00C4ED53 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350B2101E14814B00C4ED53 /* TodayViewController.swift */; };
+		D350B2141E14814B00C4ED53 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D350B2121E14814B00C4ED53 /* MainInterface.storyboard */; };
+		D350B2181E14814B00C4ED53 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D350B20C1E14814B00C4ED53 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */; };
 		D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA421E02EF0A00E81AE1 /* MainViewController.swift */; };
 		D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D378FA471E02EF0A00E81AE1 /* Assets.xcassets */; };
@@ -25,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D350B2161E14814B00C4ED53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D378FA351E02EF0A00E81AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D350B20B1E14814B00C4ED53;
+			remoteInfo = Widget;
+		};
 		D378FA521E02EF0A00E81AE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D378FA351E02EF0A00E81AE1 /* Project object */;
@@ -41,6 +52,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D350B21C1E14814B00C4ED53 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D350B2181E14814B00C4ED53 /* Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0DAAA4706B075CEC458351D3 /* Pods-IPCanaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPCanaryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IPCanaryTests/Pods-IPCanaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		0E1D30D1AB87DCFFE0C61DC0 /* Pods_IPCanary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IPCanary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +77,11 @@
 		AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IPCanaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3095DEF1E11623100CDB7DA /* Date_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
 		D3095DF11E11DF7500CDB7DA /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		D350B20C1E14814B00C4ED53 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D350B20D1E14814B00C4ED53 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D350B2101E14814B00C4ED53 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D350B2131E14814B00C4ED53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D350B2151E14814B00C4ED53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D378FA3D1E02EF0A00E81AE1 /* IPCanary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPCanary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D378FA421E02EF0A00E81AE1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +102,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D350B2091E14814B00C4ED53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D350B20E1E14814B00C4ED53 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D378FA3A1E02EF0A00E81AE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,8 +156,19 @@
 				0E1D30D1AB87DCFFE0C61DC0 /* Pods_IPCanary.framework */,
 				AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */,
 				7EDF47A40F680B03031CCD6C /* Pods_IPCanaryUITests.framework */,
+				D350B20D1E14814B00C4ED53 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D350B20F1E14814B00C4ED53 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				D350B2101E14814B00C4ED53 /* TodayViewController.swift */,
+				D350B2121E14814B00C4ED53 /* MainInterface.storyboard */,
+				D350B2151E14814B00C4ED53 /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		D378FA341E02EF0A00E81AE1 = {
@@ -128,6 +177,7 @@
 				D378FA3F1E02EF0A00E81AE1 /* IPCanary */,
 				D378FA541E02EF0A00E81AE1 /* IPCanaryTests */,
 				D378FA5F1E02EF0A00E81AE1 /* IPCanaryUITests */,
+				D350B20F1E14814B00C4ED53 /* Widget */,
 				D378FA3E1E02EF0A00E81AE1 /* Products */,
 				1172AC3BA5C13AD8963F02ED /* Pods */,
 				38787041EE3A5D7C2A3ABEBA /* Frameworks */,
@@ -140,6 +190,7 @@
 				D378FA3D1E02EF0A00E81AE1 /* IPCanary.app */,
 				D378FA511E02EF0A00E81AE1 /* IPCanaryTests.xctest */,
 				D378FA5C1E02EF0A00E81AE1 /* IPCanaryUITests.xctest */,
+				D350B20C1E14814B00C4ED53 /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +234,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D350B20B1E14814B00C4ED53 /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D350B21B1E14814B00C4ED53 /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				D350B2081E14814B00C4ED53 /* Sources */,
+				D350B2091E14814B00C4ED53 /* Frameworks */,
+				D350B20A1E14814B00C4ED53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = D350B20C1E14814B00C4ED53 /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D378FA3C1E02EF0A00E81AE1 /* IPCanary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D378FA651E02EF0A00E81AE1 /* Build configuration list for PBXNativeTarget "IPCanary" */;
@@ -193,10 +261,12 @@
 				D378FA3B1E02EF0A00E81AE1 /* Resources */,
 				201888BCFF8DF01E97042707 /* [CP] Embed Pods Frameworks */,
 				ADFB77D5E7CD602256AE3AFE /* [CP] Copy Pods Resources */,
+				D350B21C1E14814B00C4ED53 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D350B2171E14814B00C4ED53 /* PBXTargetDependency */,
 			);
 			name = IPCanary;
 			productName = IPCanary;
@@ -255,6 +325,11 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = SBSoftware;
 				TargetAttributes = {
+					D350B20B1E14814B00C4ED53 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L2KLWCGU85;
+						ProvisioningStyle = Automatic;
+					};
 					D378FA3C1E02EF0A00E81AE1 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = L2KLWCGU85;
@@ -290,11 +365,20 @@
 				D378FA3C1E02EF0A00E81AE1 /* IPCanary */,
 				D378FA501E02EF0A00E81AE1 /* IPCanaryTests */,
 				D378FA5B1E02EF0A00E81AE1 /* IPCanaryUITests */,
+				D350B20B1E14814B00C4ED53 /* Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D350B20A1E14814B00C4ED53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D350B2141E14814B00C4ED53 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D378FA3B1E02EF0A00E81AE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,6 +544,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D350B2081E14814B00C4ED53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D350B2111E14814B00C4ED53 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D378FA391E02EF0A00E81AE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,6 +585,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D350B2171E14814B00C4ED53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D350B20B1E14814B00C4ED53 /* Widget */;
+			targetProxy = D350B2161E14814B00C4ED53 /* PBXContainerItemProxy */;
+		};
 		D378FA531E02EF0A00E81AE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D378FA3C1E02EF0A00E81AE1 /* IPCanary */;
@@ -506,6 +603,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D350B2121E14814B00C4ED53 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D350B2131E14814B00C4ED53 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		D378FA491E02EF0A00E81AE1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -517,6 +622,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D350B2191E14814B00C4ED53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = L2KLWCGU85;
+				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanary.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D350B21A1E14814B00C4ED53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = L2KLWCGU85;
+				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanary.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		D378FA631E02EF0A00E81AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -612,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B69E078CF90251DA8277DF7 /* Pods-IPCanary.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanary/Info.plist;
@@ -628,6 +762,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7FEF1E7F51BF5385E7890345 /* Pods-IPCanary.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L2KLWCGU85;
 				INFOPLIST_FILE = IPCanary/Info.plist;
@@ -705,6 +840,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D350B21B1E14814B00C4ED53 /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D350B2191E14814B00C4ED53 /* Debug */,
+				D350B21A1E14814B00C4ED53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D378FA381E02EF0A00E81AE1 /* Build configuration list for PBXProject "IPCanary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
