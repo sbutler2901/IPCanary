@@ -1,0 +1,6 @@
+framework module Pods_IPCanaryKitTests {
+  umbrella header "Pods-IPCanaryKitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

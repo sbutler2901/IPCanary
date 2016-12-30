@@ -1,6 +1,6 @@
 //
 //  Date_Extension.swift
-//  IPCanary
+//  IPCanaryKit
 //
 
 import Foundation

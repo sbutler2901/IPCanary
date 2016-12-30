@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import IPCanaryKit
 
 protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
@@ -33,21 +34,21 @@ class MainViewModel: NetworkManagerUpdatable {
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     
-        currentIP = networkManager.currentIPAddress.getIPAddress()
-        city = networkManager.currentIPAddress.getCity()
-        country = networkManager.currentIPAddress.getCountry()
-        hostname = networkManager.currentIPAddress.getHostname()
-        ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
-        ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
+        currentIP = networkManager.getCurrentIPAddress().getIPAddress()
+        city = networkManager.getCurrentIPAddress().getCity()
+        country = networkManager.getCurrentIPAddress().getCountry()
+        hostname = networkManager.getCurrentIPAddress().getHostname()
+        ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
+        ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
     }
     
     func ipUpdated() {
-        currentIP = networkManager.currentIPAddress.getIPAddress()
-        city = networkManager.currentIPAddress.getCity()
-        country = networkManager.currentIPAddress.getCountry()
-        hostname = networkManager.currentIPAddress.getHostname()
-        ipLastUpdate = networkManager.currentIPAddress.getLastUpdateDate().description
-        ipLastChanged = networkManager.currentIPAddress.getLastChangeDate().description
+        currentIP = networkManager.getCurrentIPAddress().getIPAddress()
+        city = networkManager.getCurrentIPAddress().getCity()
+        country = networkManager.getCurrentIPAddress().getCountry()
+        hostname = networkManager.getCurrentIPAddress().getHostname()
+        ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
+        ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
         delegate?.viewModelDidUpdate()
     }
     

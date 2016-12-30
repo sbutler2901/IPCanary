@@ -1,6 +1,6 @@
 //
 //  NotificationManager.swift
-//  IPCanary
+//  IPCanaryKit
 //
 //  Created by Seth Butler on 12/26/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
@@ -9,13 +9,13 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager: NSObject {
+public class NotificationManager: NSObject {
     
     private var notificationIDcntr = 0
     
     var notificationsActive: Bool = false
     
-    override init() {
+    public override init() {
         super.init()
         self.registerForNotifications()
     }
@@ -81,13 +81,13 @@ class NotificationManager: NSObject {
 
 extension NotificationManager: UNUserNotificationCenterDelegate {
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("NotificationManager: Foreground notification started")
         completionHandler([.alert, .sound])
     }
     
     /// Handles Notification Actions resulting from user interaction with the notifications
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("NotificationManager: Notification interacted with by user")
         switch response.actionIdentifier {
             

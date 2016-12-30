@@ -11,6 +11,16 @@ target 'IPCanary' do
 pod 'Alamofire', '~> 4.0'
 pod 'SwiftyJSON'
 
+  target 'IPCanaryKit’ do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'IPCanaryKitTests’ do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
   target 'IPCanaryTests' do
     inherit! :search_paths
     # Pods for testing

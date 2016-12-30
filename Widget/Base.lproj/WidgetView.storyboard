@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Today View Controller-->
+        <!--Widget View Controller-->
         <scene sceneID="cwh-vc-ff4">
             <objects>
-                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Widget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M4Y-Lb-cyx" customClass="WidgetViewController" customModule="Widget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
@@ -152,6 +152,13 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="140"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="IYV-w0-ulp" id="7EX-dc-CTG"/>
+                        <outlet property="countryLabel" destination="oFa-ow-tpS" id="U5a-Kr-ZUt"/>
+                        <outlet property="currentIPLabel" destination="GDR-pe-SOT" id="1lS-q3-kgX"/>
+                        <outlet property="ipLastChangedLabel" destination="8rh-qr-V0Z" id="Tjx-gb-Q3a"/>
+                        <outlet property="ipLastUpdateLabel" destination="JTL-P8-9sA" id="TcZ-Jf-vI7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

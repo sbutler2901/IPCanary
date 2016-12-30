@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import IPCanaryKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

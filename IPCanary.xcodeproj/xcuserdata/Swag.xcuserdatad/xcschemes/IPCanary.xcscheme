@@ -49,6 +49,16 @@
                ReferencedContainer = "container:IPCanary.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D36B0B6D1E16DBDD00548378"
+               BuildableName = "IPCanaryKitTests.xctest"
+               BlueprintName = "IPCanaryKitTests"
+               ReferencedContainer = "container:IPCanary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

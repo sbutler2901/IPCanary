@@ -1,6 +1,6 @@
 //
 //  NetworkManager.swift
-//  IPCanary
+//  IPCanaryKit
 //
 //  Created by Seth Butler on 12/16/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
@@ -13,26 +13,25 @@ import UserNotifications
 
 let host = "https://ifconfig.co"
 
-protocol NetworkManagerUpdatable {
+public protocol NetworkManagerUpdatable {
     func ipUpdated()
 }
 
-class NetworkManager {
+public class NetworkManager {
     
     //MARK: - Class Variables
     
     private var lastRequestDate: Date
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
-    private let autoRefreshFreq: Double = 60.0               // Number of seconds before the IP address is automatically refreshed
+    private let autoRefreshFreq: Double = 60.0      // Number of seconds before the IP address is automatically refreshed
+    private let notificationManager: NotificationManager
+    private var currentIPAddress: IPAddress
     
-    let notificationManager: NotificationManager
-    
-    var currentIPAddress: IPAddress
-    var delegate: NetworkManagerUpdatable?
+    public var delegate: NetworkManagerUpdatable?
 
     // MARK: - Class Functions
     
-    init(notificationManager: NotificationManager) {
+    public init(notificationManager: NotificationManager) {
         self.currentIPAddress = IPAddress()
         self.lastRequestDate = Date()
         self.notificationManager = notificationManager
@@ -43,7 +42,7 @@ class NetworkManager {
     }
     
     /// Makes a network request to retrieve current IP address and other info
-    func refreshIP() {
+    public func refreshIP() {
         let currentRequestDate = Date()
         let secondsSinceLastRequests = currentRequestDate.seconds(from: lastRequestDate)
         
@@ -102,5 +101,9 @@ class NetworkManager {
                 print("There was an error requesting the IP: \(error)")
             }
         }
+    }
+    
+    public func getCurrentIPAddress() -> IPAddress {
+        return self.currentIPAddress
     }
 }
