@@ -25,6 +25,7 @@
 		D36B0B851E16DD7400548378 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C00B6B1E09114F00A5C50E /* IPAddress.swift */; };
 		D36B0B861E16DD7400548378 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095DF11E11DF7500CDB7DA /* NotificationManager.swift */; };
 		D36B0B871E16DD7400548378 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA791E04448000E81AE1 /* NetworkManager.swift */; };
+		D36B0B8F1E16EE7B00548378 /* WidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B0B8E1E16EE7B00548378 /* WidgetTests.swift */; };
 		D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */; };
 		D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378FA421E02EF0A00E81AE1 /* MainViewController.swift */; };
 		D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D378FA471E02EF0A00E81AE1 /* Assets.xcassets */; };
@@ -64,6 +65,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D36B0B651E16DBDD00548378;
 			remoteInfo = IPCanaryKit;
+		};
+		D36B0B911E16EE7B00548378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D378FA351E02EF0A00E81AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D378FA3C1E02EF0A00E81AE1;
+			remoteInfo = IPCanary;
 		};
 		D378FA521E02EF0A00E81AE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -133,6 +141,9 @@
 		D36B0B6E1E16DBDD00548378 /* IPCanaryKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPCanaryKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36B0B751E16DBDD00548378 /* IPCanaryKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCanaryKitTests.swift; sourceTree = "<group>"; };
 		D36B0B771E16DBDD00548378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D36B0B8C1E16EE7A00548378 /* WidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36B0B8E1E16EE7B00548378 /* WidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTests.swift; sourceTree = "<group>"; };
+		D36B0B901E16EE7B00548378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D378FA3D1E02EF0A00E81AE1 /* IPCanary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPCanary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D378FA401E02EF0A00E81AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D378FA421E02EF0A00E81AE1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +188,13 @@
 			files = (
 				D36B0B6F1E16DBDD00548378 /* IPCanaryKit.framework in Frameworks */,
 				1DF2C84908C23C1A4156EFD7 /* Pods_IPCanaryKitTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D36B0B891E16EE7A00548378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +289,15 @@
 			path = IPCanaryKitTests;
 			sourceTree = "<group>";
 		};
+		D36B0B8D1E16EE7B00548378 /* WidgetTests */ = {
+			isa = PBXGroup;
+			children = (
+				D36B0B8E1E16EE7B00548378 /* WidgetTests.swift */,
+				D36B0B901E16EE7B00548378 /* Info.plist */,
+			);
+			path = WidgetTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		D378FA341E02EF0A00E81AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +305,7 @@
 				D378FA541E02EF0A00E81AE1 /* IPCanaryTests */,
 				D378FA5F1E02EF0A00E81AE1 /* IPCanaryUITests */,
 				D350B20F1E14814B00C4ED53 /* Widget */,
+				D36B0B8D1E16EE7B00548378 /* WidgetTests */,
 				D36B0B671E16DBDD00548378 /* IPCanaryKit */,
 				D36B0B741E16DBDD00548378 /* IPCanaryKitTests */,
 				D378FA3E1E02EF0A00E81AE1 /* Products */,
@@ -295,6 +323,7 @@
 				D350B20C1E14814B00C4ED53 /* Widget.appex */,
 				D36B0B661E16DBDD00548378 /* IPCanaryKit.framework */,
 				D36B0B6E1E16DBDD00548378 /* IPCanaryKitTests.xctest */,
+				D36B0B8C1E16EE7A00548378 /* WidgetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,6 +433,24 @@
 			productReference = D36B0B6E1E16DBDD00548378 /* IPCanaryKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D36B0B8B1E16EE7A00548378 /* WidgetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D36B0B931E16EE7B00548378 /* Build configuration list for PBXNativeTarget "WidgetTests" */;
+			buildPhases = (
+				D36B0B881E16EE7A00548378 /* Sources */,
+				D36B0B891E16EE7A00548378 /* Frameworks */,
+				D36B0B8A1E16EE7A00548378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D36B0B921E16EE7B00548378 /* PBXTargetDependency */,
+			);
+			name = WidgetTests;
+			productName = WidgetTests;
+			productReference = D36B0B8C1E16EE7A00548378 /* WidgetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D378FA3C1E02EF0A00E81AE1 /* IPCanary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D378FA651E02EF0A00E81AE1 /* Build configuration list for PBXNativeTarget "IPCanary" */;
@@ -496,6 +543,12 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = D378FA3C1E02EF0A00E81AE1;
 					};
+					D36B0B8B1E16EE7A00548378 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L2KLWCGU85;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D378FA3C1E02EF0A00E81AE1;
+					};
 					D378FA3C1E02EF0A00E81AE1 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = L2KLWCGU85;
@@ -534,6 +587,7 @@
 				D350B20B1E14814B00C4ED53 /* Widget */,
 				D36B0B651E16DBDD00548378 /* IPCanaryKit */,
 				D36B0B6D1E16DBDD00548378 /* IPCanaryKitTests */,
+				D36B0B8B1E16EE7A00548378 /* WidgetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -555,6 +609,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D36B0B6C1E16DBDD00548378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D36B0B8A1E16EE7A00548378 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -829,6 +890,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D36B0B881E16EE7A00548378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36B0B8F1E16EE7B00548378 /* WidgetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D378FA391E02EF0A00E81AE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -877,6 +946,11 @@
 			isa = PBXTargetDependency;
 			target = D36B0B651E16DBDD00548378 /* IPCanaryKit */;
 			targetProxy = D36B0B791E16DBDD00548378 /* PBXContainerItemProxy */;
+		};
+		D36B0B921E16EE7B00548378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D378FA3C1E02EF0A00E81AE1 /* IPCanary */;
+			targetProxy = D36B0B911E16EE7B00548378 /* PBXContainerItemProxy */;
 		};
 		D378FA531E02EF0A00E81AE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -942,6 +1016,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E0AC8D2320C1B9BBE2F2A79 /* Pods-IPCanaryKit.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -967,6 +1042,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E48AD639A1B1011B03766FD5 /* Pods-IPCanaryKit.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1014,6 +1090,36 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.IPCanaryKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IPCanary.app/IPCanary";
+			};
+			name = Release;
+		};
+		D36B0B941E16EE7B00548378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L2KLWCGU85;
+				INFOPLIST_FILE = WidgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.WidgetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IPCanary.app/IPCanary";
+			};
+			name = Debug;
+		};
+		D36B0B951E16EE7B00548378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L2KLWCGU85;
+				INFOPLIST_FILE = WidgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SBSoftware.WidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IPCanary.app/IPCanary";
@@ -1236,6 +1342,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D36B0B931E16EE7B00548378 /* Build configuration list for PBXNativeTarget "WidgetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D36B0B941E16EE7B00548378 /* Debug */,
+				D36B0B951E16EE7B00548378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D378FA381E02EF0A00E81AE1 /* Build configuration list for PBXProject "IPCanary" */ = {
 			isa = XCConfigurationList;

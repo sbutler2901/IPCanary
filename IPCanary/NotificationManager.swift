@@ -13,14 +13,14 @@ public class NotificationManager: NSObject {
     
     private var notificationIDcntr = 0
     
-    var notificationsActive: Bool = false
+    private var notificationsActive: Bool = false
     
     public override init() {
         super.init()
         self.registerForNotifications()
     }
     
-    func registerForNotifications() {
+    private func registerForNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (granted,error) in
             if granted {
                 UNUserNotificationCenter.current().delegate = self

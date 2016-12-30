@@ -24,12 +24,22 @@ public class NetworkManager {
     private var lastRequestDate: Date
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
     private let autoRefreshFreq: Double = 60.0      // Number of seconds before the IP address is automatically refreshed
-    private let notificationManager: NotificationManager
+    private let notificationManager: NotificationManager?
     private var currentIPAddress: IPAddress
     
     public var delegate: NetworkManagerUpdatable?
 
     // MARK: - Class Functions
+    
+    public init() {
+        self.currentIPAddress = IPAddress()
+        self.lastRequestDate = Date()
+        self.notificationManager = nil
+        self.networkQueryIP()
+        Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
+            self.refreshIP()
+        })
+    }
     
     public init(notificationManager: NotificationManager) {
         self.currentIPAddress = IPAddress()
@@ -69,7 +79,7 @@ public class NetworkManager {
         
         // Uncomment when finished testing
         //if(self.currentIPAddress.getIPAddress() != newIP) {
-        self.notificationManager.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
+        self.notificationManager?.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
         //}
         
         self.currentIPAddress.setAddress(address: newIP, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
