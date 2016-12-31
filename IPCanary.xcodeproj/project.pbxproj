@@ -73,6 +73,13 @@
 			remoteGlobalIDString = D378FA3C1E02EF0A00E81AE1;
 			remoteInfo = IPCanary;
 		};
+		D36B0B9B1E17657300548378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D378FA351E02EF0A00E81AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D36B0B651E16DBDD00548378;
+			remoteInfo = IPCanaryKit;
+		};
 		D378FA521E02EF0A00E81AE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D378FA351E02EF0A00E81AE1 /* Project object */;
@@ -387,6 +394,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D36B0B9C1E17657300548378 /* PBXTargetDependency */,
 			);
 			name = Widget;
 			productName = Widget;
@@ -963,6 +971,11 @@
 			isa = PBXTargetDependency;
 			target = D378FA3C1E02EF0A00E81AE1 /* IPCanary */;
 			targetProxy = D36B0B911E16EE7B00548378 /* PBXContainerItemProxy */;
+		};
+		D36B0B9C1E17657300548378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D36B0B651E16DBDD00548378 /* IPCanaryKit */;
+			targetProxy = D36B0B9B1E17657300548378 /* PBXContainerItemProxy */;
 		};
 		D378FA531E02EF0A00E81AE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
