@@ -57,7 +57,7 @@ class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewMod
     // MARK: - View Controller Methods
 
     required init?(coder aDecoder: NSCoder) {
-        widgetViewModel = IPCanaryWidgetViewModel(networkManager: NetworkManager(withAutoRefresh: false))
+        widgetViewModel = IPCanaryWidgetViewModel(networkManager: IPCanaryKitNetworkManager(withAutoRefresh: false))
         super.init(coder: aDecoder)
         self.widgetViewModel.delegate = self
     }

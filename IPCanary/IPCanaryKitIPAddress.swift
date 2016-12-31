@@ -1,5 +1,5 @@
 //
-//  IPAddress.swift
+//  IPCanaryKitIPAddress.swift
 //  IPCanaryKit
 //
 //  Created by Seth Butler on 12/20/16.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Reprents an IP address & its corresponding important info
-public class IPAddress {
+public class IPCanaryKitIPAddress {
     
     // MARK: - Class Variables
 

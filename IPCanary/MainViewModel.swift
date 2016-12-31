@@ -14,7 +14,7 @@ protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
 }
 
-class MainViewModel: NetworkManagerUpdatable {
+class MainViewModel: IPCanaryKitNetworkManagerUpdatable {
     
     // MARK: - MVVM Variables
 
@@ -28,7 +28,7 @@ class MainViewModel: NetworkManagerUpdatable {
 
     // MARK: - Class Variables
     
-    private let networkManager: NetworkManager
+    private let networkManager: IPCanaryKitNetworkManager
     
     // MARK: - MVVM Functions
     
@@ -42,7 +42,7 @@ class MainViewModel: NetworkManagerUpdatable {
     /// Initializes the ViewModel & prepares data for ViewControllers usage
     ///
     /// - Parameter networkManager: Communicates with network host & retrieves info for ViewModel
-    init(networkManager: NetworkManager) {
+    init(networkManager: IPCanaryKitNetworkManager) {
         self.networkManager = networkManager
 
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()

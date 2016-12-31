@@ -1,5 +1,5 @@
 //
-//  NotificationManager.swift
+//  IPCanaryKitNotificationManager.swift
 //  IPCanaryKit
 //
 //  Created by Seth Butler on 12/26/16.
@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-public class NotificationManager: NSObject {
+public class IPCanaryKitNotificationManager: NSObject {
     
     //MARK: - Class Variables
     
@@ -94,7 +94,7 @@ public class NotificationManager: NSObject {
 }
 
 /// Allows the notification to handle notifications delivered while app is in the foreground
-extension NotificationManager: UNUserNotificationCenterDelegate {
+extension IPCanaryKitNotificationManager: UNUserNotificationCenterDelegate {
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("NotificationManager: Foreground notification started")

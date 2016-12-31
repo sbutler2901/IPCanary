@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  IPCanaryKitNetworkManager.swift
 //  IPCanaryKit
 //
 //  Created by Seth Butler on 12/16/16.
@@ -14,27 +14,27 @@ import UserNotifications
 let host = "https://ifconfig.co"
 
 /// Notifies implementing classes when the Network has retrieved new info from network host
-public protocol NetworkManagerUpdatable {
+public protocol IPCanaryKitNetworkManagerUpdatable {
     func ipUpdated()
 }
 
 /// Makes requests to a network host for IP related info
-public class NetworkManager {
+public class IPCanaryKitNetworkManager {
     
     //MARK: - Class Variables
     
     private var lastRequestDate: Date
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
     private let autoRefreshFreq: Double = 60.0      // Number of seconds before the IP address is automatically refreshed
-    private let notificationManager: NotificationManager?
-    private var currentIPAddress: IPAddress
+    private let notificationManager: IPCanaryKitNotificationManager?
+    private var currentIPAddress: IPCanaryKitIPAddress
     
-    public var delegate: NetworkManagerUpdatable?
+    public var delegate: IPCanaryKitNetworkManagerUpdatable?
 
     // MARK: - Class Functions
     
     public init(withAutoRefresh: Bool) {
-        self.currentIPAddress = IPAddress()
+        self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
         self.notificationManager = nil
         self.networkQueryIP()
@@ -46,8 +46,8 @@ public class NetworkManager {
         }
     }
     
-    public init(withAutoRefresh: Bool, notificationManager: NotificationManager) {
-        self.currentIPAddress = IPAddress()
+    public init(withAutoRefresh: Bool, notificationManager: IPCanaryKitNotificationManager) {
+        self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
         self.notificationManager = notificationManager
         networkQueryIP()
@@ -106,7 +106,7 @@ public class NetworkManager {
             case .success:
                 guard let data = response.data else {
                     print("There was an error getting the IP");
-                    self.currentIPAddress = IPAddress()
+                    self.currentIPAddress = IPCanaryKitIPAddress()
                     self.delegate?.ipUpdated()
                     break
                 }
@@ -123,7 +123,7 @@ public class NetworkManager {
         }
     }
     
-    public func getCurrentIPAddress() -> IPAddress {
+    public func getCurrentIPAddress() -> IPCanaryKitIPAddress {
         return self.currentIPAddress
     }
 }
