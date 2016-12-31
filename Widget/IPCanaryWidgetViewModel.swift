@@ -1,8 +1,8 @@
 //
-//  MainViewModel.swift
-//  IPCanary
+//  IPCanaryWidgetViewModel.swift
+//  IPCanaryWidget
 //
-//  Created by Seth Butler on 12/15/16.
+//  Created by Seth Butler on 12/28/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
 //
 
@@ -13,17 +13,12 @@ protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
 }
 
-class MainViewModel: NetworkManagerUpdatable {
-    
-    // MARK: - Variables associated with view/viewController
-
+class IPCanaryWidgetViewModel: NetworkManagerUpdatable {
     var currentIP: String
     var city: String
     var country: String
-    var hostname: String
     var ipLastUpdate: String
     var ipLastChanged: String
-    
     
     // MARK: - Variables an instance of the class which handle the data
     private let networkManager: NetworkManager
@@ -33,11 +28,10 @@ class MainViewModel: NetworkManagerUpdatable {
     // MARK: - Init - initialize variables to be used by view/viewcontroller
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
-
+        
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
         country = networkManager.getCurrentIPAddress().getCountry()
-        hostname = networkManager.getCurrentIPAddress().getHostname()
         ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
         ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
         
@@ -48,7 +42,6 @@ class MainViewModel: NetworkManagerUpdatable {
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
         country = networkManager.getCurrentIPAddress().getCountry()
-        hostname = networkManager.getCurrentIPAddress().getHostname()
         ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
         ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
         delegate?.viewModelDidUpdate()
@@ -57,9 +50,4 @@ class MainViewModel: NetworkManagerUpdatable {
     func refreshIP() {
         networkManager.refreshIP()
     }
-    
-//    func loadData() {
-//        // TODO : get the ip
-//        //networkManager.refreshIP()
-//    }
 }

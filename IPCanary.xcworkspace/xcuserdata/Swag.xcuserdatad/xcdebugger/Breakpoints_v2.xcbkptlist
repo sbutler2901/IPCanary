@@ -9,61 +9,78 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IPCanaryTests/IPCanaryTests.swift"
-            timestampString = "504150085.88572"
+            filePath = "IPCanary/AppDelegate.swift"
+            timestampString = "504817029.430025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "testNetworkManagerUpdateIP()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IPCanaryTests.IPCanaryTests.(testNetworkManagerUpdateIP () -&gt; ()).(closure #1)"
-                  moduleName = "IPCanaryTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Swag/CSCI/Programming/Swift/Personal%20Projects/IPCanary/IPCanaryTests/IPCanaryTests.swift"
-                  timestampString = "504068029.022758"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "71">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IPCanaryTests.IPCanaryTests.(testNetworkManagerUpdateIP () -&gt; ()).(closure #1).(implicit closure #1)"
-                  moduleName = "IPCanaryTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Swag/CSCI/Programming/Swift/Personal%20Projects/IPCanary/IPCanaryTests/IPCanaryTests.swift"
-                  timestampString = "504068029.024939"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "77">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IPCanaryTests.IPCanaryTests.(testNetworkManagerUpdateIP () -&gt; ()).(closure #1).(implicit closure #2)"
-                  moduleName = "IPCanaryTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Swag/CSCI/Programming/Swift/Personal%20Projects/IPCanary/IPCanaryTests/IPCanaryTests.swift"
-                  timestampString = "504068029.027043"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/WidgetViewController.swift"
+            timestampString = "504812755.281337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/WidgetViewController.swift"
+            timestampString = "504812911.11822"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "widgetPerformUpdate(completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/IPCanaryWidgetViewController.swift"
+            timestampString = "504842973.690742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/IPCanaryWidgetViewController.swift"
+            timestampString = "504845794.357562"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "widgetPerformUpdate(completionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

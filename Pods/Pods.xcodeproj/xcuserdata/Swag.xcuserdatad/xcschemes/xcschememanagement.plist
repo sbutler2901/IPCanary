@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-IPCanaryKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-IPCanaryKitTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-IPCanaryTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>22ECA484ECB27D6CA92F8B93A90012D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>34A6C6EC2EE5C55D0F2134820973701F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6500F43D9156E6D05C707332EFECB047</key>
 		<dict>
 			<key>primary</key>
 			<true/>

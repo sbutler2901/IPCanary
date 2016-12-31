@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MainViewController: UIViewController , ViewModelUpdatable {
 
@@ -33,7 +34,8 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     init(mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
-        super.init(nibName: "MainViewController", bundle: nil)
+        super.init(nibName: "MainView", bundle: nil)
+        self.mainViewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -57,7 +59,7 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        mainViewModel.refreshIP()
+        //mainViewModel.refreshIP()
     }
 
     override func didReceiveMemoryWarning() {
