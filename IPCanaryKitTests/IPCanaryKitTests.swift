@@ -83,12 +83,12 @@ class IPCanaryKitTests: XCTestCase {
     
     // Ensures network manager's current ip has been initialized
     func testNetworkManagerHasIP() {
-        XCTAssertNotNil(networkManager.currentIPAddress)
+        XCTAssertNotNil(networkManager.getCurrentIPAddress())
     }
     
     // Ensures when the network manager makes a new network request, the current IP has been updated
     func testNetworkManagerUpdateIP() {
-        let previousUpdateDate = networkManager.currentIPAddress.getLastUpdateDate()
+        let previousUpdateDate = networkManager.getCurrentIPAddress().getLastUpdateDate()
         
         //let expectation: XCTestExpectation = self.expectation(description: "Network Request")
         
@@ -96,7 +96,7 @@ class IPCanaryKitTests: XCTestCase {
         
         //waitForExpectations(timeout: 10.0, handler: nil)
         
-        XCTAssertNotEqual(networkManager.currentIPAddress.getLastUpdateDate(), previousUpdateDate)
+        XCTAssertNotEqual(networkManager.getCurrentIPAddress().getLastUpdateDate(), previousUpdateDate)
     }
     
     func testPerformanceExample() {

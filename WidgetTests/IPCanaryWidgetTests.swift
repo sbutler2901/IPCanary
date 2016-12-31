@@ -1,15 +1,15 @@
 //
-//  WidgetTests.swift
-//  WidgetTests
+//  IPCanaryWidgetTests.swift
+//  IPCanaryWidgetTests
 //
 //  Created by Seth Butler on 12/30/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
 //
 
 import XCTest
-@testable import Widget
+//@testable import IPCanaryWidget
 
-class WidgetTests: XCTestCase {
+class IPCanaryWidgetTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

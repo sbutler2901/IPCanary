@@ -1,6 +1,6 @@
 //
-//  WidgetViewController.swift
-//  Widget
+//  IPCanaryWidgetViewController.swift
+//  IPCanaryWidget
 //
 //  Created by Seth Butler on 12/28/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 import NotificationCenter
-import IPCanary
+import IPCanaryKit
 
-class WidgetViewController: UIViewController, NCWidgetProviding/*, ViewModelUpdatable*/ {
+class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewModelUpdatable {
     
     @IBOutlet var currentIPLabel: UILabel!
     @IBOutlet var cityLabel: UILabel!
@@ -18,14 +18,28 @@ class WidgetViewController: UIViewController, NCWidgetProviding/*, ViewModelUpda
     @IBOutlet var ipLastUpdateLabel: UILabel!
     @IBOutlet var ipLastChangedLabel: UILabel!
     
-//    func viewModelDidUpdate() {
-//        currentIPLabel.text = mainViewModel.currentIP
-//        cityLabel.text = mainViewModel.city
-//        countryLabel.text = mainViewModel.country
-//        hostnameLabel.text = mainViewModel.hostname
-//        ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
-//        ipLastChangedLabel.text = mainViewModel.ipLastChanged
-//    }
+    private let networkManager: NetworkManager
+    private let widgetViewModel: IPCanaryWidgetViewModel
+    
+    required init?(coder aDecoder: NSCoder) {
+        //fatalError("init(coder:) has not been implemented")
+        networkManager = NetworkManager()
+        widgetViewModel = IPCanaryWidgetViewModel(networkManager: networkManager)
+        super.init(coder: aDecoder)
+    }
+    
+    func viewModelDidUpdate() {
+        currentIPLabel.text = widgetViewModel.currentIP
+        cityLabel.text = widgetViewModel.city
+        countryLabel.text = widgetViewModel.country
+        ipLastUpdateLabel.text = widgetViewModel.ipLastUpdate
+        ipLastChangedLabel.text = widgetViewModel.ipLastChanged
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModelDidUpdate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

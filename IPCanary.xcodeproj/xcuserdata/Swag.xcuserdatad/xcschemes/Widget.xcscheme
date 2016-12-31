@@ -58,8 +58,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D36B0B8B1E16EE7A00548378"
-               BuildableName = "WidgetTests.xctest"
-               BlueprintName = "WidgetTests"
+               BuildableName = "IPCanaryWidgetTests.xctest"
+               BlueprintName = "IPCanaryWidgetTests"
                ReferencedContainer = "container:IPCanary.xcodeproj">
             </BuildableReference>
          </TestableReference>
