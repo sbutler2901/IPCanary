@@ -1,6 +1,6 @@
 //
 //  IPAddress.swift
-//  IPCanary
+//  IPCanaryKit
 //
 //  Created by Seth Butler on 12/20/16.
 //  Copyright © 2016 SBSoftware. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IPAddress {
+public class IPAddress {
     
     private var address: String
     private var city: String
@@ -69,27 +69,27 @@ class IPAddress {
         self.lastUpdateDate = date
     }
     
-    func getIPAddress() -> String {
+    public func getIPAddress() -> String {
         return address
     }
     
-    func getCity() -> String {
+    public func getCity() -> String {
         return city
     }
     
-    func getCountry() -> String {
+    public func getCountry() -> String {
         return country
     }
     
-    func getHostname() -> String {
+    public func getHostname() -> String {
         return hostname
     }
     
-    func getLastUpdateDate() -> Date {
+    public func getLastUpdateDate() -> Date {
         return lastUpdateDate
     }
     
-    func getLastChangeDate() -> Date {
+    public func getLastChangeDate() -> Date {
         return lastChangeDate
     }
 }

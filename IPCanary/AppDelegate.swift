@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import IPCanaryKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,29 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let notificationManager = NotificationManager()
+        let networkManager = NetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
+        let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
+        let mainViewController = MainViewController(mainViewModel: mainViewModel)
+
         navigationController = UINavigationController()
         navigationController.navigationBar.barTintColor = UIColor.lightGray
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-        let notificationManager = NotificationManager()
-        
-        let networkManager = NetworkManager(notificationManager: notificationManager)
-        
-        let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
-        networkManager.delegate = mainViewModel
-
-        let mainViewController = MainViewController(mainViewModel: mainViewModel)
-        mainViewModel.delegate = mainViewController
-
         navigationController.pushViewController(mainViewController, animated: false)
-        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
-        
-        //application.registerUserNotificationSettings(UNNotificationSettings())
-        
+                
         return true
     }
 

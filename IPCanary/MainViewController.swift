@@ -34,7 +34,8 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     init(mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
-        super.init(nibName: "MainViewController", bundle: nil)
+        super.init(nibName: "MainView", bundle: nil)
+        self.mainViewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
