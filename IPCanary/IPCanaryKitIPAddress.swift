@@ -1,5 +1,5 @@
 //
-//  IPAddress.swift
+//  IPCanaryKitIPAddress.swift
 //  IPCanaryKit
 //
 //  Created by Seth Butler on 12/20/16.
@@ -8,8 +8,11 @@
 
 import Foundation
 
-public class IPAddress {
+/// Reprents an IP address & its corresponding important info
+public class IPCanaryKitIPAddress {
     
+    // MARK: - Class Variables
+
     private var address: String
     private var city: String
     private var country: String
@@ -17,6 +20,8 @@ public class IPAddress {
     private var lastUpdateDate: Date
     private var lastChangeDate: Date
     
+    // MARK: - Class Functions
+
     init() {
         address = "0.0.0.0"
         self.city = "Unknown"
@@ -24,8 +29,6 @@ public class IPAddress {
         self.hostname = "Unknown"
         lastUpdateDate = Date()
         lastChangeDate = lastUpdateDate
-        
-        //print("Date: \(lastUpdateDate)")
     }
     
     init(address: String, city: String, country: String, hostname: String ) {

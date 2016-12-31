@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let notificationManager = NotificationManager()
-        let networkManager = NetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
+        let notificationManager = IPCanaryKitNotificationManager()
+        let networkManager = IPCanaryKitNetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
         let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
         let mainViewController = MainViewController(mainViewModel: mainViewModel)
 

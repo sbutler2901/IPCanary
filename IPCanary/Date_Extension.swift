@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// Extends Foundation Date class to provide specific infomation relating to the date 
 extension Date {
     /// Returns the amount of years from another date
     func years(from date: Date) -> Int {

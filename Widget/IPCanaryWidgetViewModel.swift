@@ -9,24 +9,39 @@
 import Foundation
 import IPCanaryKit
 
+/// Notifies implementing classes when the ViewModel has been updated
 protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
 }
 
-class IPCanaryWidgetViewModel: NetworkManagerUpdatable {
+class IPCanaryWidgetViewModel: IPCanaryKitNetworkManagerUpdatable {
+    
+    // MARK: - MVVM Variables
+
     var currentIP: String
     var city: String
     var country: String
     var ipLastUpdate: String
     var ipLastChanged: String
-    
-    // MARK: - Variables an instance of the class which handle the data
-    private let networkManager: NetworkManager
-    
     var delegate: ViewModelUpdatable?
     
-    // MARK: - Init - initialize variables to be used by view/viewcontroller
-    init(networkManager: NetworkManager) {
+    // MARK: - Class Variables
+    
+    private let networkManager: IPCanaryKitNetworkManager
+    
+    // MARK: - MVVM Functions
+    
+    /// Used to request update of ViewModel data
+    func refreshIP() {
+        networkManager.refreshIP()
+    }
+
+    // MARK: - Class Functions
+
+    /// Initializes the ViewModel & prepares data for ViewControllers usage
+    ///
+    /// - Parameter networkManager: Communicates with network host & retrieves info for ViewModel
+    init(networkManager: IPCanaryKitNetworkManager) {
         self.networkManager = networkManager
         
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
@@ -38,6 +53,7 @@ class IPCanaryWidgetViewModel: NetworkManagerUpdatable {
         self.networkManager.delegate = self
     }
     
+    /// Delegate function executed when the NetworkManager has received updated info from network host
     func ipUpdated() {
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
@@ -45,9 +61,5 @@ class IPCanaryWidgetViewModel: NetworkManagerUpdatable {
         ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
         ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
         delegate?.viewModelDidUpdate()
-    }
-    
-    func refreshIP() {
-        networkManager.refreshIP()
     }
 }
