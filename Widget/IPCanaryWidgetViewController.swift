@@ -26,6 +26,11 @@ class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewMod
         self.widgetViewModel.delegate = self
     }
     
+    @IBAction func widgetTapped(_ sender: UITapGestureRecognizer) {
+        widgetViewModel.refreshIP()
+    }
+    
+    
     func viewModelDidUpdate() {
         currentIPLabel.text = widgetViewModel.currentIP
         cityLabel.text = widgetViewModel.city
