@@ -11,15 +11,19 @@ import UserNotifications
 
 public class NotificationManager: NSObject {
     
-    private var notificationIDcntr = 0
+    //MARK: - Class Variables
     
+    private var notificationIDcntr = 0                  // Incremented for each notification sent to user
     private var notificationsActive: Bool = false
+    
+    //MARK: - Class Functions
     
     public override init() {
         super.init()
         self.registerForNotifications()
     }
     
+    /// Ensures the user has granted permission for app to provide notifications
     private func registerForNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { (granted,error) in
             if granted {
@@ -31,6 +35,14 @@ public class NotificationManager: NSObject {
     }
     
     //TODO: - Delete/update previous notifications if new ip change?
+    
+    /// Notifies user once with provided info after the given time interval
+    ///
+    /// - Parameters:
+    ///   - title: the title of the notification
+    ///   - subtitle: the subtitle of the notification
+    ///   - body: the body of the notification
+    ///   - waitTime: the time to wait before delivering notification to user
     func notifyUserOnce(title: String, subtitle: String, body: String?, waitTime: TimeInterval) {
         if(notificationsActive) {
             
@@ -42,7 +54,9 @@ public class NotificationManager: NSObject {
             let content = UNMutableNotificationContent()
             content.title = title
             content.subtitle = subtitle
-            //guard content.body = body
+            if body != nil {
+                content.body = body!
+            }
             content.badge = 1
             content.sound = UNNotificationSound.default()
             
@@ -79,6 +93,7 @@ public class NotificationManager: NSObject {
     }
 }
 
+/// Allows the notification to handle notifications delivered while app is in the foreground
 extension NotificationManager: UNUserNotificationCenterDelegate {
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

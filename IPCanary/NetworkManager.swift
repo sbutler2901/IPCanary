@@ -13,10 +13,12 @@ import UserNotifications
 
 let host = "https://ifconfig.co"
 
+/// Notifies implementing classes when the Network has retrieved new info from network host
 public protocol NetworkManagerUpdatable {
     func ipUpdated()
 }
 
+/// Makes requests to a network host for IP related info
 public class NetworkManager {
     
     //MARK: - Class Variables
@@ -57,7 +59,7 @@ public class NetworkManager {
         }
     }
     
-    /// Makes a network request to retrieve current IP address and other info
+    /// Makes a network request to retrieve current IP address and other info while ensuring network host is not spammed
     public func refreshIP() {
         let currentRequestDate = Date()
         let secondsSinceLastRequests = currentRequestDate.seconds(from: lastRequestDate)
@@ -92,6 +94,8 @@ public class NetworkManager {
     }
     
     // TODO: 1. handle various server status codes
+    
+    /// Makes the request to the network host describe at top of file for IP related info
     private func networkQueryIP() {
         let headers: HTTPHeaders = [
             "Accept": "application/json"

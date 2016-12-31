@@ -10,7 +10,11 @@ import UIKit
 import UserNotifications
 
 class MainViewController: UIViewController , ViewModelUpdatable {
-
+    
+    // MARK: - Class Variables
+    
+    private let mainViewModel: MainViewModel
+    
     // MARK: - IBOutlets
     
     @IBOutlet var currentIPLabel: UILabel!
@@ -26,9 +30,16 @@ class MainViewController: UIViewController , ViewModelUpdatable {
         mainViewModel.refreshIP()
     }
     
-    // MARK: - Class Variables
+    // MARK: - MVVM Functions
     
-    private let mainViewModel: MainViewModel
+    func viewModelDidUpdate() {
+        currentIPLabel.text = mainViewModel.currentIP
+        cityLabel.text = mainViewModel.city
+        countryLabel.text = mainViewModel.country
+        hostnameLabel.text = mainViewModel.hostname
+        ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
+        ipLastChangedLabel.text = mainViewModel.ipLastChanged
+    }
     
     // MARK: - View Controller Methods
     
@@ -40,15 +51,6 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     required init?(coder: NSCoder) {
         fatalError("NSCoding not supported")
-    }
-    
-    func viewModelDidUpdate() {
-        currentIPLabel.text = mainViewModel.currentIP
-        cityLabel.text = mainViewModel.city
-        countryLabel.text = mainViewModel.country
-        hostnameLabel.text = mainViewModel.hostname
-        ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
-        ipLastChangedLabel.text = mainViewModel.ipLastChanged
     }
     
     override func viewWillAppear(_ animated: Bool) {
