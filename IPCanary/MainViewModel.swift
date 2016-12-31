@@ -33,13 +33,15 @@ class MainViewModel: NetworkManagerUpdatable {
     // MARK: - Init - initialize variables to be used by view/viewcontroller
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
-    
+
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
         country = networkManager.getCurrentIPAddress().getCountry()
         hostname = networkManager.getCurrentIPAddress().getHostname()
         ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
         ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
+        
+        self.networkManager.delegate = self
     }
     
     func ipUpdated() {
@@ -56,8 +58,8 @@ class MainViewModel: NetworkManagerUpdatable {
         networkManager.refreshIP()
     }
     
-    func loadData() {
-        // TODO : get the ip
-        //networkManager.refreshIP()
-    }
+//    func loadData() {
+//        // TODO : get the ip
+//        //networkManager.refreshIP()
+//    }
 }

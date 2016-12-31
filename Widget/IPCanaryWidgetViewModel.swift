@@ -13,7 +13,7 @@ protocol ViewModelUpdatable: class {
     func viewModelDidUpdate()
 }
 
-class IPCanaryWidgetViewModel {
+class IPCanaryWidgetViewModel: NetworkManagerUpdatable {
     var currentIP: String
     var city: String
     var country: String
@@ -34,5 +34,20 @@ class IPCanaryWidgetViewModel {
         country = networkManager.getCurrentIPAddress().getCountry()
         ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
         ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
+        
+        self.networkManager.delegate = self
+    }
+    
+    func ipUpdated() {
+        currentIP = networkManager.getCurrentIPAddress().getIPAddress()
+        city = networkManager.getCurrentIPAddress().getCity()
+        country = networkManager.getCurrentIPAddress().getCountry()
+        ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
+        ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
+        delegate?.viewModelDidUpdate()
+    }
+    
+    func refreshIP() {
+        networkManager.refreshIP()
     }
 }

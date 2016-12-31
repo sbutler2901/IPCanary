@@ -18,14 +18,12 @@ class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewMod
     @IBOutlet var ipLastUpdateLabel: UILabel!
     @IBOutlet var ipLastChangedLabel: UILabel!
     
-    private let networkManager: NetworkManager
     private let widgetViewModel: IPCanaryWidgetViewModel
     
     required init?(coder aDecoder: NSCoder) {
-        //fatalError("init(coder:) has not been implemented")
-        networkManager = NetworkManager()
-        widgetViewModel = IPCanaryWidgetViewModel(networkManager: networkManager)
+        widgetViewModel = IPCanaryWidgetViewModel(networkManager: NetworkManager(withAutoRefresh: false))
         super.init(coder: aDecoder)
+        self.widgetViewModel.delegate = self
     }
     
     func viewModelDidUpdate() {
@@ -44,7 +42,6 @@ class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewMod
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-        //print("viewLoaded")
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,7 +56,7 @@ class IPCanaryWidgetViewController: UIViewController, NCWidgetProviding, ViewMod
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        //test = NetworkManager()
+        widgetViewModel.refreshIP()
         
         completionHandler(NCUpdateResult.newData)
     }

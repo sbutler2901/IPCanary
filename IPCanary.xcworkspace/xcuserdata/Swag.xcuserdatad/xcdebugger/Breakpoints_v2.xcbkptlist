@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Widget/IPCanaryWidgetViewController.swift"
-            timestampString = "504839229.955501"
+            timestampString = "504842973.690742"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "init(coder:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Widget/IPCanaryWidgetViewController.swift"
-            timestampString = "504839585.274709"
+            timestampString = "504845794.357562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "widgetPerformUpdate(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

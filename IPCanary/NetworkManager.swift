@@ -31,24 +31,30 @@ public class NetworkManager {
 
     // MARK: - Class Functions
     
-    public init() {
+    public init(withAutoRefresh: Bool) {
         self.currentIPAddress = IPAddress()
         self.lastRequestDate = Date()
         self.notificationManager = nil
         self.networkQueryIP()
-        Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
-            self.refreshIP()
-        })
+        
+        if(withAutoRefresh) {
+            Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
+                self.refreshIP()
+            })
+        }
     }
     
-    public init(notificationManager: NotificationManager) {
+    public init(withAutoRefresh: Bool, notificationManager: NotificationManager) {
         self.currentIPAddress = IPAddress()
         self.lastRequestDate = Date()
         self.notificationManager = notificationManager
         networkQueryIP()
-        Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
-            self.refreshIP()
-        })
+        
+        if(withAutoRefresh) {
+            Timer.scheduledTimer(withTimeInterval: autoRefreshFreq, repeats: true, block: { timer in
+                self.refreshIP()
+            })
+        }
     }
     
     /// Makes a network request to retrieve current IP address and other info
