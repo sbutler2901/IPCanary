@@ -7,4 +7,4 @@ iOS users can now see the public ip address and other related stats of their dev
 Clone and install on personal device using Xcode. When the project gets to a worthy state I will publish it on the app store for easier usage and accessibility.
 
 ## Credits
-[IPD](https://github.com/martinp/ipd) 
+[IPD](https://github.com/martinp/ipd) - Open Source GO server which provides basic IP stats for the project
