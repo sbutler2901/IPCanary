@@ -63,7 +63,7 @@ class MainViewController: UIViewController , ViewModelUpdatable {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //mainViewModel.refreshIP()
-        refreshBtn.layer.cornerRadius = 2.0
+        refreshBtn.layer.cornerRadius = 7.0
         refreshBtn.layer.borderWidth = 1
         refreshBtn.layer.borderColor = UIColor.white.cgColor
     }
