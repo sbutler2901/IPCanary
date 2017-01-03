@@ -69,32 +69,27 @@ class IPCanaryUITests: XCTestCase {
     // MARK: - View Tests
     
     func testDisplayAtLoad() {
-        let refreshBtn: XCUIElement = app.buttons["Refresh Button"]
         let ipAddressLabel: XCUIElement = app.staticTexts["IP Label"]
         let cityLabel: XCUIElement = app.staticTexts["City Label"]
         let countryLabel: XCUIElement = app.staticTexts["Country Label"]
         let hostnameLabel: XCUIElement = app.staticTexts["Hostname Label"]
         let lastUpdateOutputLabel: XCUIElement = app.staticTexts["Last Update Output Label"]
         let lastChangeOutputLabel: XCUIElement = app.staticTexts["Last Change Output Label"]
+        let bottomViewElement: XCUIElement = app.otherElements["Bottom View"]
+        //let refreshBtn: XCUIElement = bottomViewElement.buttons["Refresh Button"]
         
-        XCTAssert(refreshBtn.exists)
+        
         XCTAssert(ipAddressLabel.exists)
         XCTAssert(cityLabel.exists)
         XCTAssert(countryLabel.exists)
         XCTAssert(hostnameLabel.exists)
         XCTAssert(lastUpdateOutputLabel.exists)
         XCTAssert(lastChangeOutputLabel.exists)
-        
-        
-        refreshBtn.tap()
-        //XCTAssertEqual(lastUpdateOutputLabel.val, lastChangeOutputLabel.value)
-        
-        
-        //app.staticTexts["IP Label"].tap()
-        //app.staticTexts["Last Change Label"].tap()
-        //app.staticTexts["Last Update Label"].tap()
+        XCTAssert(bottomViewElement.exists)
+        //XCTAssert(refreshBtn.exists)
 
-    
+        
+        bottomViewElement.tap()
     }
     
     func testExample() {

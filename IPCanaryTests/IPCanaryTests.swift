@@ -8,16 +8,17 @@
 
 import XCTest
 @testable import IPCanary
+@testable import IPCanaryKit
 
 class IPCanaryTests: XCTestCase {
     //var vc : MainViewController!
-    var networkManager: NetworkManager!
+    var networkManager: IPCanaryKitNetworkManager!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        networkManager = NetworkManager()
+        networkManager = IPCanaryKitNetworkManager(withAutoRefresh: false)
         
         /*let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         vc = storyboard.instantiateInitialViewController() as! MainViewController*/
@@ -36,32 +37,34 @@ class IPCanaryTests: XCTestCase {
     // Ensures instance of mainview model's ip variables matches that of network manager's
     func testMainViewModelIP() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
-        XCTAssertEqual(mainViewModel.city, networkManager.currentIPAddress.getCity())
-        XCTAssertEqual(mainViewModel.country, networkManager.currentIPAddress.getCountry())
-        XCTAssertEqual(mainViewModel.hostname, networkManager.currentIPAddress.getHostname())
-        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
-        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
+        XCTAssertEqual(mainViewModel.currentIP, networkManager.getCurrentIPAddress().getIPAddress())
+        XCTAssertEqual(mainViewModel.city, networkManager.getCurrentIPAddress().getCity())
+        XCTAssertEqual(mainViewModel.country, networkManager.getCurrentIPAddress().getCountry())
+        XCTAssertEqual(mainViewModel.hostname, networkManager.getCurrentIPAddress().getHostname())
+        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.getCurrentIPAddress().getLastUpdateDate().description)
+        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.getCurrentIPAddress().getLastChangeDate().description)
     }
     
     // Tests if main view model IP is updated without the view model being established as delegate
     func testMainViewModelIPUpdated() {
         let mainViewModel = MainViewModel(networkManager: networkManager)
         
+        networkManager.delegate = nil
+        
         XCTAssertNil(networkManager.delegate)
         
-        let ipAddress = networkManager.currentIPAddress.getIPAddress()
-        let city = networkManager.currentIPAddress.getCity()
-        let country  = networkManager.currentIPAddress.getCountry()
-        let hostname = networkManager.currentIPAddress.getHostname()
+        let ipAddress = networkManager.getCurrentIPAddress().getIPAddress()
+        let city = networkManager.getCurrentIPAddress().getCity()
+        let country  = networkManager.getCurrentIPAddress().getCountry()
+        let hostname = networkManager.getCurrentIPAddress().getHostname()
         
         var newUpdateDate = Date()
         newUpdateDate.addTimeInterval(TimeInterval(10))
         
-        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+        networkManager.getCurrentIPAddress().setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
         networkManager.delegate?.ipUpdated()
         
-        XCTAssertNotEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
+        XCTAssertNotEqual(mainViewModel.ipLastUpdate, networkManager.getCurrentIPAddress().getLastUpdateDate().description)
     }
     
     // Tests if main view model IP is updated with view model established as delegate
@@ -71,21 +74,21 @@ class IPCanaryTests: XCTestCase {
         
         XCTAssertNotNil(networkManager.delegate)
         
-        let ipAddress = networkManager.currentIPAddress.getIPAddress()
-        let city = networkManager.currentIPAddress.getCity()
-        let country  = networkManager.currentIPAddress.getCountry()
-        let hostname = networkManager.currentIPAddress.getHostname()
+        let ipAddress = networkManager.getCurrentIPAddress().getIPAddress()
+        let city = networkManager.getCurrentIPAddress().getCity()
+        let country  = networkManager.getCurrentIPAddress().getCountry()
+        let hostname = networkManager.getCurrentIPAddress().getHostname()
         
         var newUpdateDate = Date()
         newUpdateDate.addTimeInterval(TimeInterval(10))
         
-        networkManager.currentIPAddress.setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
+        networkManager.getCurrentIPAddress().setAddress(address: ipAddress, city: city, country: country, hostname: hostname, date: newUpdateDate)
         
         networkManager.delegate?.ipUpdated()
         
-        XCTAssertEqual(mainViewModel.currentIP, networkManager.currentIPAddress.getIPAddress())
-        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.currentIPAddress.getLastUpdateDate().description)
-        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.currentIPAddress.getLastChangeDate().description)
+        XCTAssertEqual(mainViewModel.currentIP, networkManager.getCurrentIPAddress().getIPAddress())
+        XCTAssertEqual(mainViewModel.ipLastUpdate, networkManager.getCurrentIPAddress().getLastUpdateDate().description)
+        XCTAssertEqual(mainViewModel.ipLastChanged, networkManager.getCurrentIPAddress().getLastChangeDate().description)
     }
     
     // TODO: - After timer refresh has been implemented. Use Mock Data?
