@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,89 +17,208 @@
                 <outlet property="hostnameLabel" destination="IWh-Ll-Vtv" id="tho-eM-Gjg"/>
                 <outlet property="ipLastChangedLabel" destination="JBj-Ys-JfN" id="eeE-I4-8oQ"/>
                 <outlet property="ipLastUpdateLabel" destination="nmC-ND-oG1" id="EuP-v6-Gkl"/>
+                <outlet property="refreshBtn" destination="bge-TA-lSk" id="ebK-MX-lYp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MGr-Fe-Mwz"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IP Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwi-Qg-Bfe">
-                    <rect key="frame" x="7" y="179" width="343" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="192.168.1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwi-Qg-Bfe">
+                    <rect key="frame" x="35" y="128" width="250" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="IP Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="9Dv-Jy-3B8"/>
+                        <constraint firstAttribute="height" constant="20" id="Gnp-eL-r3q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bge-TA-lSk">
-                    <rect key="frame" x="129" y="415" width="100" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" identifier="Refresh Button"/>
-                    <state key="normal" title="Refresh"/>
-                    <connections>
-                        <action selector="refreshPressed:" destination="-1" eventType="touchUpInside" id="sf5-1C-UBl"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Update:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5p2-A1-cQL">
-                    <rect key="frame" x="16" y="295" width="100" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Update" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5p2-A1-cQL">
+                    <rect key="frame" x="105" y="322" width="110" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Last Update Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="PEE-YG-nsh"/>
+                        <constraint firstAttribute="width" constant="110" id="e6x-LQ-vie"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Change:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xl-J5-PeN">
-                    <rect key="frame" x="7" y="324" width="117" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Change" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xl-J5-PeN">
+                    <rect key="frame" x="105" y="378" width="110" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Last Change Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="B3K-UO-8Wr"/>
+                        <constraint firstAttribute="height" constant="20" id="iph-co-UUe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Update Output" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmC-ND-oG1">
-                    <rect key="frame" x="124" y="295" width="235" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-01-02 23:47:44 +0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmC-ND-oG1">
+                    <rect key="frame" x="15" y="350" width="290" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Last Update Output Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="3Nz-PX-SXF"/>
+                        <constraint firstAttribute="width" constant="290" id="ivO-Xo-HyN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-o8-bYa">
-                    <rect key="frame" x="8" y="208" width="343" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atlanta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-o8-bYa">
+                    <rect key="frame" x="15" y="182" width="290" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="City Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="7OY-kA-kbN"/>
+                        <constraint firstAttribute="width" constant="290" id="adA-7g-c13"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j0-Yz-e3F">
-                    <rect key="frame" x="7" y="237" width="343" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j0-Yz-e3F">
+                    <rect key="frame" x="15" y="238" width="290" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Country Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="1If-t7-hCx"/>
+                        <constraint firstAttribute="width" constant="290" id="Il2-wK-oy5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hostname Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWh-Ll-Vtv">
-                    <rect key="frame" x="8" y="266" width="343" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="104.129.24.147.adsl.inet-telecom.org" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWh-Ll-Vtv">
+                    <rect key="frame" x="15" y="294" width="290" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Hostname Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="EW4-Hb-eWP"/>
+                        <constraint firstAttribute="width" constant="290" id="jyP-T4-ZSx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Change Output" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBj-Ys-JfN">
-                    <rect key="frame" x="124" y="324" width="235" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58Z-Q8-Xz6">
+                    <rect key="frame" x="105" y="100" width="110" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="6yF-vU-fOz"/>
+                        <constraint firstAttribute="height" constant="20" id="Mft-g4-wqA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVk-dQ-Llp">
+                    <rect key="frame" x="105" y="154" width="110" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Ex4-2O-G8L"/>
+                        <constraint firstAttribute="width" constant="110" id="Ztl-Eu-xqQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpY-pp-Msh">
+                    <rect key="frame" x="105" y="266" width="110" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="WoL-Fj-taN"/>
+                        <constraint firstAttribute="height" constant="20" id="lTA-g4-9zD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-5H-yS4">
+                    <rect key="frame" x="105" y="210" width="110" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="sxF-TS-FIG"/>
+                        <constraint firstAttribute="width" constant="110" id="uWY-b0-GxJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-01-02 23:47:44 +0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBj-Ys-JfN">
+                    <rect key="frame" x="15" y="406" width="290" height="20"/>
                     <accessibility key="accessibilityConfiguration" identifier="Last Change Output Label"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="1fV-9k-SLL"/>
+                        <constraint firstAttribute="width" constant="290" id="gO4-d1-tGS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1c-t4-ezl">
+                    <rect key="frame" x="0.0" y="448" width="320" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bge-TA-lSk">
+                            <rect key="frame" x="110" y="45" width="100" height="30"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Refresh Button"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="IMq-yH-w4x"/>
+                                <constraint firstAttribute="width" constant="100" id="sQS-rq-IEU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                            <state key="normal" title="Refresh">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="refreshPressed:" destination="-1" eventType="touchUpInside" id="sf5-1C-UBl"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.51764705882352935" green="0.0" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <accessibility key="accessibilityConfiguration" identifier="Bottom View">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstItem="bge-TA-lSk" firstAttribute="centerY" secondItem="X1c-t4-ezl" secondAttribute="centerY" id="Gyk-AT-tDF"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="gOR-a9-Pca"/>
+                        <constraint firstItem="bge-TA-lSk" firstAttribute="centerX" secondItem="X1c-t4-ezl" secondAttribute="centerX" id="gkS-yo-FOT"/>
+                        <constraint firstAttribute="height" constant="120" id="wnu-n4-Yl8"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="5j0-Yz-e3F" firstAttribute="top" secondItem="IEu-5H-yS4" secondAttribute="bottom" constant="8" id="07i-ig-Ohc"/>
+                <constraint firstItem="X1c-t4-ezl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Df-H9-8KG"/>
+                <constraint firstItem="FpY-pp-Msh" firstAttribute="top" secondItem="5j0-Yz-e3F" secondAttribute="bottom" constant="8" id="3dT-Lb-lXr"/>
+                <constraint firstItem="JBj-Ys-JfN" firstAttribute="top" secondItem="1Xl-J5-PeN" secondAttribute="bottom" constant="8" id="40H-gT-wGJ"/>
+                <constraint firstItem="58Z-Q8-Xz6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5A6-54-Ylo"/>
+                <constraint firstItem="5j0-Yz-e3F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Xr-96-To5"/>
+                <constraint firstAttribute="bottom" secondItem="X1c-t4-ezl" secondAttribute="bottom" id="7hL-wj-Hdh"/>
+                <constraint firstItem="1Xl-J5-PeN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FYD-ab-E8S"/>
+                <constraint firstItem="5p2-A1-cQL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HFz-Zv-XCe"/>
+                <constraint firstItem="jVk-dQ-Llp" firstAttribute="top" secondItem="Xwi-Qg-Bfe" secondAttribute="bottom" constant="6" id="HHh-RG-XVc"/>
+                <constraint firstAttribute="trailing" secondItem="X1c-t4-ezl" secondAttribute="trailing" id="MwV-vY-ubt"/>
+                <constraint firstItem="IEu-5H-yS4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nr4-EV-VAi"/>
+                <constraint firstItem="1Xl-J5-PeN" firstAttribute="top" secondItem="nmC-ND-oG1" secondAttribute="bottom" constant="8" id="S5l-i6-u9M"/>
+                <constraint firstItem="5p2-A1-cQL" firstAttribute="top" secondItem="IWh-Ll-Vtv" secondAttribute="bottom" constant="8" id="TX4-VN-45r"/>
+                <constraint firstItem="nmC-ND-oG1" firstAttribute="top" secondItem="5p2-A1-cQL" secondAttribute="bottom" constant="8" id="XCX-3s-CX3"/>
+                <constraint firstItem="jVk-dQ-Llp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZqH-8F-tNp"/>
+                <constraint firstItem="Xwi-Qg-Bfe" firstAttribute="top" secondItem="58Z-Q8-Xz6" secondAttribute="bottom" constant="8" id="bEi-pW-ayf"/>
+                <constraint firstItem="aAz-o8-bYa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="e1u-XL-4Mq"/>
+                <constraint firstItem="IWh-Ll-Vtv" firstAttribute="top" secondItem="FpY-pp-Msh" secondAttribute="bottom" constant="8" id="gZa-mC-JX4"/>
+                <constraint firstItem="aAz-o8-bYa" firstAttribute="top" secondItem="jVk-dQ-Llp" secondAttribute="bottom" constant="8" id="i4n-gA-CJ1"/>
+                <constraint firstItem="IWh-Ll-Vtv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iNp-32-pNQ"/>
+                <constraint firstItem="aAz-o8-bYa" firstAttribute="top" secondItem="jVk-dQ-Llp" secondAttribute="bottom" constant="8" id="k0i-Vj-CtN"/>
+                <constraint firstItem="IEu-5H-yS4" firstAttribute="top" secondItem="aAz-o8-bYa" secondAttribute="bottom" constant="8" id="lKq-mO-kFC"/>
+                <constraint firstItem="JBj-Ys-JfN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ne8-hC-beM"/>
+                <constraint firstItem="nmC-ND-oG1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ozm-LU-EgT"/>
+                <constraint firstItem="58Z-Q8-Xz6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="skl-Mo-u4D"/>
+                <constraint firstItem="Xwi-Qg-Bfe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uCR-EU-Qxd"/>
+                <constraint firstItem="5j0-Yz-e3F" firstAttribute="top" secondItem="IEu-5H-yS4" secondAttribute="bottom" constant="8" id="ugb-Tg-QWY"/>
+                <constraint firstItem="JBj-Ys-JfN" firstAttribute="top" secondItem="1Xl-J5-PeN" secondAttribute="bottom" constant="8" id="v4W-jQ-hQP"/>
+                <constraint firstItem="IWh-Ll-Vtv" firstAttribute="top" secondItem="FpY-pp-Msh" secondAttribute="bottom" constant="8" id="wtA-Sa-RCZ"/>
+                <constraint firstItem="FpY-pp-Msh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="z8q-bc-mRB"/>
+            </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
