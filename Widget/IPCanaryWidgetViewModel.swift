@@ -28,6 +28,7 @@ class IPCanaryWidgetViewModel: IPCanaryKitNetworkManagerUpdatable {
     // MARK: - Class Variables
     
     private let networkManager: IPCanaryKitNetworkManager
+    private let dateFormatter: DateFormatter = DateFormatter()
     
     // MARK: - MVVM Functions
     
@@ -44,11 +45,15 @@ class IPCanaryWidgetViewModel: IPCanaryKitNetworkManagerUpdatable {
     init(networkManager: IPCanaryKitNetworkManager) {
         self.networkManager = networkManager
         
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMM dd yyyy KK:mm:ss")
+        dateFormatter.timeZone = TimeZone.current
+        
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
         country = networkManager.getCurrentIPAddress().getCountry()
-        ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
-        ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
+        ipLastUpdate = dateFormatter.string(from: networkManager.getCurrentIPAddress().getLastUpdateDate())
+        ipLastChanged = dateFormatter.string(from: networkManager.getCurrentIPAddress().getLastChangeDate())
         
         self.networkManager.delegate = self
     }
@@ -58,8 +63,9 @@ class IPCanaryWidgetViewModel: IPCanaryKitNetworkManagerUpdatable {
         currentIP = networkManager.getCurrentIPAddress().getIPAddress()
         city = networkManager.getCurrentIPAddress().getCity()
         country = networkManager.getCurrentIPAddress().getCountry()
-        ipLastUpdate = networkManager.getCurrentIPAddress().getLastUpdateDate().description
-        ipLastChanged = networkManager.getCurrentIPAddress().getLastChangeDate().description
+        ipLastUpdate = dateFormatter.string(from: networkManager.getCurrentIPAddress().getLastUpdateDate())
+        ipLastChanged = dateFormatter.string(from: networkManager.getCurrentIPAddress().getLastChangeDate())
+        
         delegate?.viewModelDidUpdate()
     }
 }
