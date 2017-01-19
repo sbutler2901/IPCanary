@@ -28,7 +28,7 @@ class MainViewModel: IPCanaryKitNetworkManagerUpdatable {
 
     // MARK: - Class Variables
     
-    private let networkManager: IPCanaryKitNetworkManager
+    let networkManager: IPCanaryKitNetworkManager
     private let dateFormatter: DateFormatter = DateFormatter()
     
     // MARK: - MVVM Functions

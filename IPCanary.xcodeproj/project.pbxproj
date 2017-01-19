@@ -11,6 +11,9 @@
 		802C9D330FC2D2FDD445C21C /* Pods_IPCanary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1D30D1AB87DCFFE0C61DC0 /* Pods_IPCanary.framework */; };
 		B2A7369FDA84F7E42D61FE68 /* Pods_IPCanaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */; };
 		B6F81BA6C6968D89F0EFA54B /* Pods_IPCanaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF47A40F680B03031CCD6C /* Pods_IPCanaryUITests.framework */; };
+		D342DD631E3063BA00FD1B7B /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D342DD621E3063BA00FD1B7B /* SettingsView.xib */; };
+		D342DD651E3063D800FD1B7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D342DD641E3063D800FD1B7B /* SettingsViewController.swift */; };
+		D342DD671E3064A500FD1B7B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D342DD661E3064A500FD1B7B /* SettingsViewModel.swift */; };
 		D350B20E1E14814B00C4ED53 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350B20D1E14814B00C4ED53 /* NotificationCenter.framework */; };
 		D350B2111E14814B00C4ED53 /* IPCanaryWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350B2101E14814B00C4ED53 /* IPCanaryWidgetViewController.swift */; };
 		D350B2141E14814B00C4ED53 /* IPCanaryWidgetView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D350B2121E14814B00C4ED53 /* IPCanaryWidgetView.storyboard */; };
@@ -136,6 +139,9 @@
 		AD364F069EA564CEA300BEC1 /* Pods_IPCanaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IPCanaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3095DEF1E11623100CDB7DA /* Date_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date_Extension.swift; path = ../IPCanary/Date_Extension.swift; sourceTree = "<group>"; };
 		D3095DF11E11DF7500CDB7DA /* IPCanaryKitNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IPCanaryKitNotificationManager.swift; path = ../IPCanary/IPCanaryKitNotificationManager.swift; sourceTree = "<group>"; };
+		D342DD621E3063BA00FD1B7B /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		D342DD641E3063D800FD1B7B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D342DD661E3064A500FD1B7B /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D350B20C1E14814B00C4ED53 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D350B20D1E14814B00C4ED53 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D350B2101E14814B00C4ED53 /* IPCanaryWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCanaryWidgetViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +353,9 @@
 				D378FA471E02EF0A00E81AE1 /* Assets.xcassets */,
 				D378FA491E02EF0A00E81AE1 /* LaunchScreen.storyboard */,
 				D378FA4C1E02EF0A00E81AE1 /* Info.plist */,
+				D342DD661E3064A500FD1B7B /* SettingsViewModel.swift */,
+				D342DD641E3063D800FD1B7B /* SettingsViewController.swift */,
+				D342DD621E3063BA00FD1B7B /* SettingsView.xib */,
 			);
 			path = IPCanary;
 			sourceTree = "<group>";
@@ -647,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D378FA4B1E02EF0A00E81AE1 /* LaunchScreen.storyboard in Resources */,
+				D342DD631E3063BA00FD1B7B /* SettingsView.xib in Resources */,
 				D378FA481E02EF0A00E81AE1 /* Assets.xcassets in Resources */,
 				D378FA781E03B96600E81AE1 /* MainView.xib in Resources */,
 			);
@@ -922,9 +932,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D342DD671E3064A500FD1B7B /* SettingsViewModel.swift in Sources */,
 				D378FA431E02EF0A00E81AE1 /* MainViewController.swift in Sources */,
 				D378FA411E02EF0A00E81AE1 /* AppDelegate.swift in Sources */,
 				D378FA6F1E0390D400E81AE1 /* MainViewModel.swift in Sources */,
+				D342DD651E3063D800FD1B7B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

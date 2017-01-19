@@ -16,19 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var navigationController: UINavigationController!
+    var networkManager: IPCanaryKitNetworkManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         let notificationManager = IPCanaryKitNotificationManager()
-        let networkManager = IPCanaryKitNetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
+        networkManager = IPCanaryKitNetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
         let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
         let mainViewController = MainViewController(mainViewModel: mainViewModel)
 
-        navigationController = UINavigationController()
+        navigationController = UINavigationController(rootViewController: mainViewController)
         navigationController.navigationBar.barTintColor = UIColor.darkGray
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        navigationController.pushViewController(mainViewController, animated: false)
+        //navigationController.pushViewController(mainViewController, animated: false)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController
