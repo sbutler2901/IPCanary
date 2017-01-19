@@ -31,9 +31,9 @@ class MainViewController: UIViewController, ViewModelUpdatable {
         mainViewModel.refreshIP()
     }
     
-    @IBAction func viewSettings(sender: UIBarButtonItem) {
-        //performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-        let settingsViewModel: SettingsViewModel = SettingsViewModel()
+    @IBAction func loadSettings(sender: UIBarButtonItem) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let settingsViewModel: SettingsViewModel = SettingsViewModel(networkManager: appDelegate.networkManager)
         let settingsViewController = SettingsViewController(settingsViewModel: settingsViewModel)
         navigationController?.pushViewController(settingsViewController, animated: false)
     }
@@ -74,7 +74,7 @@ class MainViewController: UIViewController, ViewModelUpdatable {
         refreshBtn.layer.borderWidth = 1
         refreshBtn.layer.borderColor = UIColor.white.cgColor
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(viewSettings(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: String("\u{2699}"), style: .plain, target: self, action: #selector(loadSettings(sender:)))
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
 
@@ -82,7 +82,5 @@ class MainViewController: UIViewController, ViewModelUpdatable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

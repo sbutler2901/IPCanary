@@ -16,12 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var navigationController: UINavigationController!
+    var networkManager: IPCanaryKitNetworkManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         let notificationManager = IPCanaryKitNotificationManager()
-        let networkManager = IPCanaryKitNetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
+        networkManager = IPCanaryKitNetworkManager(withAutoRefresh: true, notificationManager: notificationManager)
         let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
         let mainViewController = MainViewController(mainViewModel: mainViewModel)
 

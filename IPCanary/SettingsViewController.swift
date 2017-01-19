@@ -16,25 +16,14 @@ class SettingsViewController: UIViewController, ViewModelUpdatable {
     
     // MARK: - IBOutlets
     
-//    @IBOutlet var currentIPLabel: UILabel!
-//    @IBOutlet var cityLabel: UILabel!
-//    @IBOutlet var countryLabel: UILabel!
-//    @IBOutlet var hostnameLabel: UILabel!
-//    @IBOutlet var ipLastUpdateLabel: UILabel!
-//    @IBOutlet var ipLastChangedLabel: UILabel!
-//    @IBOutlet var refreshBtn: UIButton!
+    @IBOutlet var queryHostTextField: UITextField!
     
     // MARK: - IBActions
     
     // MARK: - MVVM Functions
     
     func viewModelDidUpdate() {
-//        currentIPLabel.text = mainViewModel.currentIP
-//        cityLabel.text = mainViewModel.city
-//        countryLabel.text = mainViewModel.country
-//        hostnameLabel.text = mainViewModel.hostname
-//        ipLastUpdateLabel.text = mainViewModel.ipLastUpdate
-//        ipLastChangedLabel.text = mainViewModel.ipLastChanged
+        queryHostTextField.text = settingsViewModel.host
     }
     
     // MARK: - View Controller Methods
@@ -48,15 +37,24 @@ class SettingsViewController: UIViewController, ViewModelUpdatable {
     required init?(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        viewModelDidUpdate()
-//    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModelDidUpdate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        
+        if parent == nil {
+            settingsViewModel.hostChanged(host: queryHostTextField.text!)
+        }
     }
     
     override func didReceiveMemoryWarning() {

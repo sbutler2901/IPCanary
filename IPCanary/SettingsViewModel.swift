@@ -7,28 +7,35 @@
 //
 
 import Foundation
+import IPCanaryKit
 
 class SettingsViewModel {
 
     // MARK: - MVVM Variables
-    
-//    var currentIP: String
-//    var city: String
-//    var country: String
-//    var hostname: String
-//    var ipLastUpdate: String
-//    var ipLastChanged: String
+
+    var host: String
     var delegate: ViewModelUpdatable?
     
     // MARK: - Class Variables
-        
+    
+    private let networkManager: IPCanaryKitNetworkManager
+
     // MARK: - MVVM Functions
+    
+    func hostChanged(host: String?) {
+        if let newHost = host {
+            networkManager.setHost(host: newHost)
+        } else {
+            networkManager.setHost(host: "")
+        }
+    }
     
     // MARK: - Class Functions
     
     /// Initializes the ViewModel & prepares data for ViewControllers usage
     ///
-    init() {
-
+    init(networkManager: IPCanaryKitNetworkManager) {
+        self.networkManager = networkManager
+        self.host = self.networkManager.getHost()
     }
 }

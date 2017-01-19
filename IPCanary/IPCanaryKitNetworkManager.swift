@@ -24,8 +24,20 @@ public class IPCanaryKitNetworkManager {
     private var lastRequestDate: Date
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
     private let autoRefreshFreq: Double = 60.0      // Number of seconds before the IP address is automatically refreshed
-    private let defaultHost = "https://ifconfig.co"
-    private var host: String
+    
+    private var host: String {
+        get {
+            if let returnValue = UserDefaults.standard.object(forKey: "host") as? String {
+                return returnValue.isEmpty ? "https://ifconfig.co" : returnValue
+            } else {
+                return "https://ifconfig.co" //Default value
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "host")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     private let notificationManager: IPCanaryKitNotificationManager?
     private var currentIPAddress: IPCanaryKitIPAddress
@@ -37,7 +49,6 @@ public class IPCanaryKitNetworkManager {
     public init(withAutoRefresh: Bool) {
         self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
-        self.host = self.defaultHost
         self.notificationManager = nil
         self.networkQueryIP()
         
@@ -51,7 +62,6 @@ public class IPCanaryKitNetworkManager {
     public init(withAutoRefresh: Bool, notificationManager: IPCanaryKitNotificationManager) {
         self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
-        self.host = self.defaultHost
         self.notificationManager = notificationManager
         networkQueryIP()
         
@@ -86,12 +96,12 @@ public class IPCanaryKitNetworkManager {
         let json = JSON(data: data)
         let newIP = json["ip"].stringValue
         
-        print("Post-parsed Data: \(json)")
+        print("NetworkManager: Host: \(host)")
+        print("NetworkManager: Post-parsed Data: \(json)")
         
-        // Uncomment when finished testing
-        //if(self.currentIPAddress.getIPAddress() != newIP) {
-        self.notificationManager?.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
-        //}
+        if(self.currentIPAddress.getIPAddress() != newIP) {             // Comment for general testing
+            self.notificationManager?.notifyUserOnce(title: "IP Address has Changed!", subtitle: "New IP: \(newIP)", body: nil, waitTime: 5.0)
+        }
         
         self.currentIPAddress.setAddress(address: newIP, city: json["city"].stringValue, country: json["country"].stringValue, hostname: json["hostname"].stringValue)
     }
@@ -103,7 +113,7 @@ public class IPCanaryKitNetworkManager {
         let headers: HTTPHeaders = [
             "Accept": "application/json"
         ]
-        
+
         Alamofire.request(host, method: .get, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success:
@@ -132,5 +142,9 @@ public class IPCanaryKitNetworkManager {
     
     public func setHost(host: String) {
         self.host = host
+    }
+    
+    public func getHost() -> String {
+        return self.host
     }
 }
