@@ -11,8 +11,6 @@ import Alamofire
 import SwiftyJSON
 import UserNotifications
 
-let host = "https://ifconfig.co"
-
 /// Notifies implementing classes when the Network has retrieved new info from network host
 public protocol IPCanaryKitNetworkManagerUpdatable {
     func ipUpdated()
@@ -26,6 +24,9 @@ public class IPCanaryKitNetworkManager {
     private var lastRequestDate: Date
     private let spamRequestsWaitTime: Int = 15           // Manual network request wait time
     private let autoRefreshFreq: Double = 60.0      // Number of seconds before the IP address is automatically refreshed
+    private let defaultHost = "https://ifconfig.co"
+    private var host: String
+    
     private let notificationManager: IPCanaryKitNotificationManager?
     private var currentIPAddress: IPCanaryKitIPAddress
     
@@ -36,6 +37,7 @@ public class IPCanaryKitNetworkManager {
     public init(withAutoRefresh: Bool) {
         self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
+        self.host = self.defaultHost
         self.notificationManager = nil
         self.networkQueryIP()
         
@@ -49,6 +51,7 @@ public class IPCanaryKitNetworkManager {
     public init(withAutoRefresh: Bool, notificationManager: IPCanaryKitNotificationManager) {
         self.currentIPAddress = IPCanaryKitIPAddress()
         self.lastRequestDate = Date()
+        self.host = self.defaultHost
         self.notificationManager = notificationManager
         networkQueryIP()
         
@@ -125,5 +128,9 @@ public class IPCanaryKitNetworkManager {
     
     public func getCurrentIPAddress() -> IPCanaryKitIPAddress {
         return self.currentIPAddress
+    }
+    
+    public func setHost(host: String) {
+        self.host = host
     }
 }

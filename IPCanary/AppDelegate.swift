@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainViewModel: MainViewModel = MainViewModel(networkManager: networkManager)
         let mainViewController = MainViewController(mainViewModel: mainViewModel)
 
-        navigationController = UINavigationController()
+        navigationController = UINavigationController(rootViewController: mainViewController)
         navigationController.navigationBar.barTintColor = UIColor.darkGray
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        navigationController.pushViewController(mainViewController, animated: false)
+        //navigationController.pushViewController(mainViewController, animated: false)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController

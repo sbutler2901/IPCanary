@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class MainViewController: UIViewController , ViewModelUpdatable {
+class MainViewController: UIViewController, ViewModelUpdatable {
     
     // MARK: - Class Variables
     
@@ -29,6 +29,13 @@ class MainViewController: UIViewController , ViewModelUpdatable {
     
     @IBAction func refreshPressed(_ sender: Any) {
         mainViewModel.refreshIP()
+    }
+    
+    @IBAction func viewSettings(sender: UIBarButtonItem) {
+        //performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+        let settingsViewModel: SettingsViewModel = SettingsViewModel()
+        let settingsViewController = SettingsViewController(settingsViewModel: settingsViewModel)
+        navigationController?.pushViewController(settingsViewController, animated: false)
     }
     
     // MARK: - MVVM Functions
@@ -66,6 +73,9 @@ class MainViewController: UIViewController , ViewModelUpdatable {
         refreshBtn.layer.cornerRadius = 7.0
         refreshBtn.layer.borderWidth = 1
         refreshBtn.layer.borderColor = UIColor.white.cgColor
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(viewSettings(sender:)))
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
